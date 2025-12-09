@@ -24,6 +24,52 @@
                 min-height: 85vh;
             }
         }
+        
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px auto;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .register-form input,
+        .register-form select {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .register-form input:focus,
+        .register-form select:focus {
+            border-color: #17C3B2;
+            outline: none;
+        }
+        
+        #submit-reg-btn {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            border: none;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+        }
+        
+        #submit-reg-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(255, 107, 107, 0.3);
+        }
     </style>
 </head>
 
@@ -52,23 +98,46 @@
         </div>
     </header>
 
-    <section id="registration-form" class="registration-form-section section-center register-page-wrapper">
+    <section class="register-page-wrapper">
         <div class="content-wrapper">
-            <h2>📝 Kurslarga Ro'yxatdan O'tish</h2>
-            <p class="subtitle">Iltimos, kerakli kursni tanlang, ism va telefon raqamingizni kiriting. Menejerimiz siz bilan Telegram orqali bog'lanadi.</p>
+            <h2 style="color: #FF6B6B; font-size: 2.5em; margin-bottom: 20px;">📝 KURSGA RO'YXATDAN O'TISH</h2>
+            <p class="subtitle" style="font-size: 1.2em; max-width: 800px; margin: 0 auto 40px;">
+                Kursni tanlang, ma'lumotlaringizni kiriting va <span style="color: #FF6B6B; font-weight: bold;">50% chegirma</span> bilan ro'yxatdan o'ting! Menejer siz bilan tez orada bog'lanadi.
+            </p>
 
-            <form id="register-form" class="register-form">
-                <input type="text" id="user-name" name="FIO" placeholder="Ismingizni kiriting" required>
+            <form id="registerForm" class="register-form">
+                <div class="form-group">
+                    <label for="user-name" style="display: block; text-align: left; margin-bottom: 8px; font-weight: bold;">Ismingiz</label>
+                    <input type="text" id="user-name" name="name" placeholder="To'liq ismingizni kiriting" required>
+                </div>
                 
-                <select id="user-course" name="Kurs Nomi" required>
-                    <option value="" disabled selected>--- Kursni tanlang ---</option>
-                    <option value="Hitoydan Tavar Zakaz Qilish Kursi" data-price="50000" id="course-china">Hitoydan Tavar Zakaz Qilish Kursi. Asl narx:100.000 (50.000 UZS - 50% Chegirma)</option>
-                    <option value="Optom Tavarlar Kursi" data-price="125000" id="course-optom">Optom Tavarlar Kursi. Asl narx: 250.000(125.000 UZS - 50% Chegirma)</option>
-                </select>
+                <div class="form-group">
+                    <label for="user-course" style="display: block; text-align: left; margin-bottom: 8px; font-weight: bold;">Kursni tanlang</label>
+                    <select id="user-course" name="course" required>
+                        <option value="" disabled selected>--- Kursni tanlang ---</option>
+                        <option value="Xitoydan Tovar Zakaz Qilish Kursi" data-price="50000" id="course-china">
+                            🇨🇳 Xitoydan Tovar Zakaz Qilish Kursi - <span style="color: #FF6B6B;">50.000 UZS</span> (50% chegirma bilan)
+                        </option>
+                        <option value="Optom Tavarlar Kursi" data-price="125000" id="course-optom">
+                            📈 Optom Tavarlar Kursi - <span style="color: #FF6B6B;">125.000 UZS</span> (50% chegirma bilan)
+                        </option>
+                    </select>
+                </div>
                 
-                <input type="tel" id="user-phone" name="Telefon Raqami" placeholder="+998 (XX) XXX-XX-XX" required>
+                <div class="form-group">
+                    <label for="user-phone" style="display: block; text-align: left; margin-bottom: 8px; font-weight: bold;">Telefon raqamingiz</label>
+                    <input type="tel" id="user-phone" name="phone" placeholder="+998 (XX) XXX-XX-XX" required>
+                </div>
                 
-                <button type="submit" id="submit-reg-btn" class="promo-btn">✅ Tayyor!</button>
+                <button type="submit" id="submit-reg-btn" class="promo-btn">
+                    <span style="font-size: 1.2em;">✅ RO'YXATDAN O'TISH</span>
+                </button>
+                
+                <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <p style="margin: 0; color: #666; font-size: 0.9em;">
+                        Ro'yxatdan o'tganingizdan so'ng, sizni <strong>to'lov sahifasiga</strong> yo'naltiramiz
+                    </p>
+                </div>
             </form>
         </div>
     </section>
@@ -81,53 +150,95 @@
         </div>
     </footer>
 
-    <script src="scribt.js"></script>
-
     <script>
+        // Telefon raqamini formatlash
         document.addEventListener('DOMContentLoaded', function() {
             const phoneInput = document.getElementById('user-phone');
-
+            
             phoneInput.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, ''); 
-
-                if (value.startsWith('998')) {
-                    value = value.slice(0, 12); 
-                } else if (value.length > 0) {
-                     if (value.length <= 9) { 
-                         value = '998' + value;
-                     }
+                let value = e.target.value.replace(/\D/g, '');
+                
+                if (value.length > 0) {
+                    if (!value.startsWith('998')) {
+                        if (value.length <= 9) {
+                            value = '998' + value;
+                        }
+                    }
+                    value = value.substring(0, 12); // Maksimal 12 raqam
                 }
                 
-                let formattedValue = '';
-                
+                // Formatlash
+                let formatted = '';
                 if (value.length >= 3) {
-                    formattedValue = '+998';
-                    
-                    if (value.length > 3) formattedValue += ' ';
-
-                    if (value.length > 5) {
-                        formattedValue += `(${value.slice(3, 5)})`;
-                    } else if (value.length > 3) {
-                        formattedValue += `(${value.slice(3)}`;
+                    formatted = '+998';
+                    if (value.length > 3) {
+                        formatted += ' (' + value.substring(3, 5);
+                        if (value.length > 5) {
+                            formatted += ') ' + value.substring(5, 8);
+                            if (value.length > 8) {
+                                formatted += '-' + value.substring(8, 10);
+                                if (value.length > 10) {
+                                    formatted += '-' + value.substring(10, 12);
+                                }
+                            }
+                        }
                     }
-
-                    if (value.length > 5) {
-                        formattedValue += ` ${value.slice(5, 8)}`;
-                    }
-
-                    if (value.length > 8) {
-                        formattedValue += `-${value.slice(8, 10)}`;
-                    }
-
-                    if (value.length > 10) {
-                        formattedValue += `-${value.slice(10, 12)}`;
-                    }
-                } else {
-                    formattedValue = value; 
                 }
-
-                e.target.value = formattedValue.trim();
+                
+                e.target.value = formatted;
             });
+            
+            // Formani yuborish
+            const form = document.getElementById('registerForm');
+            const courseSelect = document.getElementById('user-course');
+            
+            // Narxlarni yangilash
+            function updateCourseText() {
+                const chinaOption = document.getElementById('course-china');
+                const optomOption = document.getElementById('course-optom');
+                
+                chinaOption.innerHTML = `🇨🇳 Xitoydan Tovar Zakaz Qilish Kursi - <span style="color: #FF6B6B;">50.000 UZS</span> (50% chegirma bilan)`;
+                optomOption.innerHTML = `📈 Optom Tavarlar Kursi - <span style="color: #FF6B6B;">125.000 UZS</span> (50% chegirma bilan)`;
+            }
+            
+            updateCourseText();
+            
+            // Form submit handler
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('user-name').value;
+                const course = courseSelect.value;
+                const phone = document.getElementById('user-phone').value;
+                const selectedOption = courseSelect.options[courseSelect.selectedIndex];
+                const price = selectedOption.getAttribute('data-price');
+                
+                if (!name || !course || !phone) {
+                    alert('Iltimos, barcha maydonlarni to\'ldiring!');
+                    return;
+                }
+                
+                // Ma'lumotlarni saqlash
+                localStorage.setItem('regName', name);
+                localStorage.setItem('regCourse', course);
+                localStorage.setItem('regPhone', phone);
+                localStorage.setItem('regPrice', formatPrice(price) + ' UZS');
+                
+                console.log('Ma\'lumotlar saqlandi:', {
+                    name: name,
+                    course: course,
+                    phone: phone,
+                    price: price
+                });
+                
+                // Payment sahifasiga o'tish
+                window.location.href = 'payment.html';
+            });
+            
+            // Narxni formatlash funksiyasi
+            function formatPrice(amount) {
+                return new Intl.NumberFormat('uz-UZ').format(amount);
+            }
         });
     </script>
 </body>
