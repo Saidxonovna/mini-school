@@ -11,105 +11,71 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            padding-top: 80px;
-        }
-        
-        .payment-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        .payment-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .payment-header h2 {
-            color: #1A1A2E;
-            font-size: 2.8em;
-            margin-bottom: 15px;
+        .payment-container {
+            min-height: calc(100vh - 120px);
+            padding: 50px 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .payment-header p {
-            color: #666;
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto;
         }
         
         .payment-card {
             background: white;
-            border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            border: 2px solid #FF6B6B;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 700px;
+            width: 100%;
+            margin-top: 30px;
+            border: 3px solid #FF6B6B;
         }
         
-        .user-info {
+        .user-info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            gap: 20px;
             margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 2px dashed #eee;
         }
         
-        .info-item {
+        .info-box {
             background: #f8f9fa;
             padding: 20px;
             border-radius: 12px;
-            border-left: 4px solid #17C3B2;
+            border-left: 5px solid #17C3B2;
         }
         
         .info-label {
             font-size: 0.9em;
             color: #666;
             margin-bottom: 8px;
-            font-weight: 500;
         }
         
         .info-value {
-            font-size: 1.4em;
-            color: #1A1A2E;
+            font-size: 1.3em;
             font-weight: 600;
+            color: #333;
         }
         
-        .total-price {
+        .price-box {
             background: linear-gradient(135deg, #FF6B6B, #FF8E53);
             color: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 15px;
             text-align: center;
             margin: 30px 0;
         }
         
-        .total-price h3 {
+        .price-box h3 {
+            margin-bottom: 15px;
             font-size: 1.8em;
-            margin-bottom: 10px;
         }
         
         .price-amount {
             font-size: 3em;
-            font-weight: 700;
+            font-weight: bold;
         }
         
-        .payment-instructions {
+        .instructions {
             background: #fff9e6;
             border: 2px dashed #FFD700;
             border-radius: 15px;
@@ -117,7 +83,7 @@
             margin: 40px 0;
         }
         
-        .card-details {
+        .card-display {
             text-align: center;
             margin: 25px 0;
         }
@@ -125,34 +91,32 @@
         .card-number {
             font-family: 'Courier New', monospace;
             font-size: 2em;
-            font-weight: 700;
-            color: #1A1A2E;
-            letter-spacing: 2px;
-            margin: 15px 0;
-            padding: 15px;
+            font-weight: bold;
+            color: #333;
             background: #f0f0f0;
-            border-radius: 10px;
-            border: 2px solid #ddd;
-        }
-        
-        .warning {
-            color: #FF6B6B;
-            background: #ffe6e6;
-            padding: 15px;
+            padding: 20px;
             border-radius: 10px;
             margin: 20px 0;
-            font-weight: 600;
-            border-left: 4px solid #FF6B6B;
+            letter-spacing: 3px;
+        }
+        
+        .warning-box {
+            background: #ffe6e6;
+            color: #d63031;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #d63031;
         }
         
         .action-buttons {
             display: flex;
             flex-direction: column;
             gap: 20px;
-            margin-top: 40px;
+            margin: 40px 0 20px;
         }
         
-        .payment-btn {
+        .action-btn-large {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -162,61 +126,69 @@
             font-size: 1.2em;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
         }
         
-        .telegram-btn {
+        .telegram-action {
             background: linear-gradient(135deg, #0088cc, #006699);
             color: white;
         }
         
-        .telegram-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 136, 204, 0.3);
+        .telegram-action:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 136, 204, 0.3);
         }
         
-        .back-btn {
+        .edit-action {
             background: #f8f9fa;
             color: #666;
             border: 2px solid #ddd;
         }
         
-        .back-btn:hover {
+        .edit-action:hover {
             background: #e9ecef;
             transform: translateY(-3px);
         }
         
-        .contact-info {
+        .contact-help {
             text-align: center;
-            margin-top: 40px;
-            padding: 25px;
+            margin-top: 50px;
+            padding: 30px;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 700px;
+            width: 100%;
         }
         
-        .contact-info h4 {
-            color: #17C3B2;
-            margin-bottom: 15px;
+        .no-data {
+            text-align: center;
+            padding: 50px;
+            background: #fff3cd;
+            border-radius: 15px;
+            margin: 50px 0;
+        }
+        
+        .no-data-btn {
+            display: inline-block;
+            background: #FF6B6B;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
         }
         
         @media (max-width: 768px) {
-            .payment-wrapper {
-                padding: 20px 15px;
-            }
-            
-            .payment-header h2 {
-                font-size: 2em;
-            }
-            
             .payment-card {
                 padding: 25px;
             }
             
             .card-number {
                 font-size: 1.5em;
+                padding: 15px;
             }
             
             .price-amount {
@@ -232,69 +204,54 @@
             <img src="logo.png" alt="Logo" class="logo-img">
             <span class="logo-text">Saidxonovnas School</span>
         </div>
-        <div class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        
         <div class="header-right">
-            <nav class="main-nav" id="mainNav">
+            <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html#home">Bosh Sahifa</a></li>
-                    <li><a href="register.html">Ro'yxatdan O'tish</a></li>
-                    <li><a href="index.html#contact">Aloqa</a></li>
+                    <li><a href="index.html">Bosh Sahifa</a></li>
+                    <li><a href="register.html">Yana Ro'yxatdan O'tish</a></li>
                 </ul>
             </nav>
-            <a href="register.html" class="action-btn desktop-only">Ro'yxatdan O'tish</a>
         </div>
     </header>
 
-    <div class="payment-wrapper">
-        <div class="payment-header">
-            <h2><i class="fas fa-credit-card"></i> To'lovni Tasdiqlash</h2>
-            <p>Kursga ro'yxatdan o'tganingiz uchun rahmat! Quyidagi ma'lumotlarni tekshiring va to'lovni amalga oshiring.</p>
+    <div class="payment-container">
+        <div style="text-align: center; max-width: 800px; margin-bottom: 30px;">
+            <h2 style="font-size: 2.8em; color: #333; margin-bottom: 15px;">
+                <i class="fas fa-credit-card"></i> To'lovni Tasdiqlash
+            </h2>
+            <p style="font-size: 1.2em; color: #666;">
+                Kursga ro'yxatdan o'tganingiz uchun rahmat! Quyidagi ma'lumotlarni tekshiring va to'lovni amalga oshiring.
+            </p>
         </div>
-
+        
         <div class="payment-card">
-            <div class="user-info">
-                <div class="info-item">
-                    <div class="info-label">Ism Familiya</div>
-                    <div class="info-value" id="payment-name">Kiritilmagan</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Tanlangan Kurs</div>
-                    <div class="info-value" id="payment-course">Tanlanmagan</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Telefon Raqam</div>
-                    <div class="info-value" id="payment-phone">Kiritilmagan</div>
-                </div>
+            <div id="userDataDisplay">
+                <!-- Ma'lumotlar bu yerga JavaScript orqali kiritiladi -->
             </div>
-
-            <div class="total-price">
-                <h3>To'lanadigan Summa</h3>
-                <div class="price-amount" id="payment-price">0 UZS</div>
-                <p style="margin-top: 10px; opacity: 0.9;">(50% chegirma bilan)</p>
-            </div>
-
-            <div class="payment-instructions">
-                <h3 style="color: #FF6B6B; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-money-bill-wave"></i> Pul O'tkazish Uchun Yo'riqnoma
+            
+            <div class="instructions">
+                <h3 style="color: #FF6B6B; margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-money-bill-wave"></i> Pul O'tkazish Yo'riqnomasi
                 </h3>
                 
-                <div class="card-details">
-                    <p style="font-weight: 600; margin-bottom: 10px;">UZCARD / HUMO karta raqami:</p>
+                <div class="card-display">
+                    <p style="font-weight: 600; margin-bottom: 15px; font-size: 1.1em;">UZCARD / HUMO karta raqami:</p>
                     <div class="card-number">8600 6827 1256 6100</div>
-                    <p style="margin-top: 15px;"><strong>Qabul qiluvchi:</strong> Bositxonova Muslimaxon</p>
+                    <p style="margin-top: 15px; font-size: 1.1em;">
+                        <strong>Qabul qiluvchi:</strong> Bositxonova Muslimaxon
+                    </p>
                 </div>
-
-                <div class="warning">
-                    <i class="fas fa-exclamation-triangle"></i> 
-                    MUHIM: To'lovni amalga oshirgandan so'ng, chekni Telegram orqali yuborishingiz kerak!
+                
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong> MUHIM:</strong> To'lovni amalga oshirgandan so'ng, chekni Telegram orqali yuborishingiz kerak!
                 </div>
-
-                <div style="background: #e8f5e9; padding: 15px; border-radius: 10px; margin-top: 20px;">
-                    <h4 style="color: #2E7D32; margin-bottom: 10px;"><i class="fas fa-lightbulb"></i> To'lovni qanday amalga oshirish:</h4>
+                
+                <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; margin-top: 25px;">
+                    <h4 style="color: #2E7D32; margin-bottom: 15px;">
+                        <i class="fas fa-lightbulb"></i> To'lov qadamalari:
+                    </h4>
                     <ol style="text-align: left; padding-left: 20px; margin: 0;">
                         <li>Yuqoridagi karta raqamiga summani o'tkazing</li>
                         <li>To'lov muvaffaqiyatli amalga oshganini tekshiring</li>
@@ -303,29 +260,37 @@
                     </ol>
                 </div>
             </div>
-
+            
             <div class="action-buttons">
-                <a href="https://t.me/Saidxonovnas_School" target="_blank" class="payment-btn telegram-btn">
+                <a href="https://t.me/Saidxonovnas_School" target="_blank" class="action-btn-large telegram-action">
                     <i class="fab fa-telegram-plane"></i>
                     ✅ Chekni Telegramda Yuborish
                 </a>
                 
-                <a href="register.html" class="payment-btn back-btn">
+                <a href="register.html" class="action-btn-large edit-action">
                     <i class="fas fa-edit"></i>
-                    📝 Ma'lumotlarni Tahrirlash
+                    📝 Ma'lumotlarni O'zgartirish
                 </a>
             </div>
         </div>
-
-        <div class="contact-info">
-            <h4><i class="fas fa-headset"></i> Qo'shimcha Yordam Kerakmi?</h4>
-            <p>Har qanday savol yoki muammo bo'lsa, biz bilan bog'laning:</p>
-            <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="https://t.me/Saidxonovnas_School" target="_blank" style="color: #0088cc; text-decoration: none;">
+        
+        <div class="contact-help">
+            <h4 style="color: #17C3B2; margin-bottom: 20px;">
+                <i class="fas fa-headset"></i> Qo'shimcha Yordam Kerakmi?
+            </h4>
+            <p style="margin-bottom: 20px;">Har qanday savol yoki muammo bo'lsa, biz bilan bog'laning:</p>
+            <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+                <a href="https://t.me/Saidxonovnas_School" target="_blank" 
+                   style="color: #0088cc; text-decoration: none; font-weight: 600;">
                     <i class="fab fa-telegram"></i> Telegram
                 </a>
-                <a href="tel:+998945165167" style="color: #17C3B2; text-decoration: none;">
+                <a href="tel:+998945165167" 
+                   style="color: #17C3B2; text-decoration: none; font-weight: 600;">
                     <i class="fas fa-phone"></i> +998 (94) 516-51-67
+                </a>
+                <a href="https://wa.me/998945165167" target="_blank" 
+                   style="color: #25D366; text-decoration: none; font-weight: 600;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
             </div>
         </div>
@@ -340,57 +305,85 @@
     </footer>
 
     <script>
-        // Ma'lumotlarni localStorage'dan olish va ko'rsatish
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('payment.html yuklandi, ma\'lumotlarni yuklash...');
+        // URL parametrlarini o'qish funksiyasi
+        function getUrlParams() {
+            const params = {};
+            const query = window.location.search.substring(1);
+            const pairs = query.split('&');
             
-            // localStorage'dan ma'lumotlarni olish
-            const name = localStorage.getItem('regName') || 'Kiritilmagan';
-            const course = localStorage.getItem('regCourse') || 'Tanlanmagan';
-            const phone = localStorage.getItem('regPhone') || 'Kiritilmagan';
-            const price = localStorage.getItem('regPrice') || '0 UZS';
-            
-            console.log('Olingan ma\'lumotlar:', { name, course, phone, price });
-            
-            // HTML elementlariga chiqarish
-            document.getElementById('payment-name').textContent = name;
-            document.getElementById('payment-course').textContent = course;
-            document.getElementById('payment-phone').textContent = phone;
-            document.getElementById('payment-price').textContent = price;
-            
-            // Agar ma'lumotlar yo'q bo'lsa, ogohlantirish
-            if (name === 'Kiritilmagan' || course === 'Tanlanmagan') {
-                const warningDiv = document.createElement('div');
-                warningDiv.className = 'warning';
-                warningDiv.innerHTML = `
-                    <i class="fas fa-exclamation-circle"></i>
-                    Ma'lumotlar to'liq emas. Iltimos, <a href="register.html" style="color: #FF6B6B; font-weight: bold;">Ro'yxatdan o'tish</a> sahifasiga qayting.
-                `;
-                document.querySelector('.payment-card').prepend(warningDiv);
+            for (let pair of pairs) {
+                const [key, value] = pair.split('=');
+                if (key && value) {
+                    params[decodeURIComponent(key)] = decodeURIComponent(value);
+                }
             }
-        });
+            return params;
+        }
         
-        // Hamburger menyu uchun JavaScript
+        // Narxni aniqlash
+        function getCoursePrice(course) {
+            if (course === 'Xitoy Kursi') return '50,000 UZS';
+            if (course === 'Optom Kursi') return '125,000 UZS';
+            return '0 UZS';
+        }
+        
+        // Sahifa yuklanganda
         document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.getElementById('menuToggle');
-            const mainNav = document.getElementById('mainNav');
+            const params = getUrlParams();
+            const displayDiv = document.getElementById('userDataDisplay');
             
-            if (menuToggle && mainNav) {
-                menuToggle.addEventListener('click', function() {
-                    mainNav.classList.toggle('active');
-                    menuToggle.classList.toggle('active');
-                });
+            if (params.name && params.course) {
+                const price = getCoursePrice(params.course);
                 
-                // Menyudagi havolalarni bosganda menyuni yopish
-                mainNav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mainNav.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                    });
-                });
+                // User ma'lumotlarini ko'rsatish
+                displayDiv.innerHTML = `
+                    <div class="user-info-grid">
+                        <div class="info-box">
+                            <div class="info-label">Ism Familiya</div>
+                            <div class="info-value">${params.name}</div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <div class="info-label">Tanlangan Kurs</div>
+                            <div class="info-value">${params.course}</div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <div class="info-label">Telefon Raqam</div>
+                            <div class="info-value">${params.phone || 'Kiritilmagan'}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="price-box">
+                        <h3>To'lanadigan Summa</h3>
+                        <div class="price-amount">${price}</div>
+                        <p style="margin-top: 10px; opacity: 0.9;">(50% chegirma bilan)</p>
+                    </div>
+                `;
+                
+                // localStorage ga ham saqlash (agar keyin kerak bo'lsa)
+                localStorage.setItem('regName', params.name);
+                localStorage.setItem('regCourse', params.course);
+                localStorage.setItem('regPhone', params.phone || '');
+                localStorage.setItem('regPrice', price);
+                
+            } else {
+                // Agar ma'lumotlar yo'q bo'lsa
+                displayDiv.innerHTML = `
+                    <div class="no-data">
+                        <h3 style="color: #d63031; margin-bottom: 20px;">
+                            <i class="fas fa-exclamation-circle"></i> Ma'lumotlar Topilmadi
+                        </h3>
+                        <p style="margin-bottom: 25px; font-size: 1.1em;">
+                            Iltimos, avval ro'yxatdan o'ting yoki sahifani qaytadan yuklang.
+                        </p>
+                        <a href="register.html" class="no-data-btn">
+                            RO'YXATDAN O'TISH SAHIFASIGA O'TISH
+                        </a>
+                    </div>
+                `;
             }
         });
     </script>
 </body>
-
 </html>
