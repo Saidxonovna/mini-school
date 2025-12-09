@@ -270,4 +270,125 @@
             <p style="margin-bottom: 15px; font-size: 0.95em;">Har qanday savol yoki muammo bo'lsa, biz bilan bog'laning:</p>
             <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
                 <a href="https://t.me/Saidxonovnas_School" target="_blank" 
-                   style="color: #0088cc; text-decoration: none; font-weight: 600; font-size: 0.9em
+                   style="color: #0088cc; text-decoration: none; font-weight: 600; font-size: 0.9em;">
+                    <i class="fab fa-telegram"></i> Telegram
+                </a>
+                <a href="tel:+998945165167" 
+                   style="color: #17C3B2; text-decoration: none; font-weight: 600; font-size: 0.9em;">
+                    <i class="fas fa-phone"></i> +998 (94) 516-51-67
+                </a>
+                <a href="https://wa.me/998945165167" target="_blank" 
+                   style="color: #25D366; text-decoration: none; font-weight: 600; font-size: 0.9em;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.</p>
+        <div class="social-links">
+            <a href="https://t.me/Saidxonovnas_School" target="_blank">Telegram</a>
+            <a href="https://instagram.com/Saidxonovnas_School" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        // URL parametrlarini o'qish funksiyasi
+        function getUrlParams() {
+            const params = {};
+            const query = window.location.search.substring(1);
+            const pairs = query.split('&');
+            
+            for (let pair of pairs) {
+                const [key, value] = pair.split('=');
+                if (key && value) {
+                    params[decodeURIComponent(key)] = decodeURIComponent(value);
+                }
+            }
+            return params;
+        }
+        
+        // Narxni aniqlash
+        function getCoursePrice(course) {
+            if (course === 'Xitoy Kursi') return '50,000 UZS';
+            if (course === 'Optom Kursi') return '125,000 UZS';
+            return '0 UZS';
+        }
+        
+        // Sahifa yuklanganda
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = getUrlParams();
+            const displayDiv = document.getElementById('userDataDisplay');
+            
+            if (params.name && params.course) {
+                const price = getCoursePrice(params.course);
+                
+                // User ma'lumotlarini ko'rsatish
+                displayDiv.innerHTML = `
+                    <div class="user-info-grid">
+                        <div class="info-box">
+                            <div class="info-label">Ism Familiya</div>
+                            <div class="info-value">${params.name}</div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <div class="info-label">Tanlangan Kurs</div>
+                            <div class="info-value">${params.course}</div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <div class="info-label">Telefon Raqam</div>
+                            <div class="info-value">${params.phone || 'Kiritilmagan'}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="price-box">
+                        <h3>To'lanadigan Summa</h3>
+                        <div class="price-amount">${price}</div>
+                        <p style="margin-top: 10px; opacity: 0.9;">(50% chegirma bilan)</p>
+                    </div>
+                `;
+                
+                // localStorage ga ham saqlash
+                localStorage.setItem('regName', params.name);
+                localStorage.setItem('regCourse', params.course);
+                localStorage.setItem('regPhone', params.phone || '');
+                localStorage.setItem('regPrice', price);
+                
+            } else {
+                // Agar ma'lumotlar yo'q bo'lsa
+                displayDiv.innerHTML = `
+                    <div class="no-data">
+                        <h3 style="color: #d63031; margin-bottom: 15px; font-size: 1.3em;">
+                            <i class="fas fa-exclamation-circle"></i> Ma'lumotlar Topilmadi
+                        </h3>
+                        <p style="margin-bottom: 20px; font-size: 1em;">
+                            Iltimos, avval ro'yxatdan o'ting yoki sahifani qaytadan yuklang.
+                        </p>
+                        <a href="register.html" class="no-data-btn">
+                            RO'YXATDAN O'TISH SAHIFASIGA O'TISH
+                        </a>
+                    </div>
+                `;
+            }
+        });
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileNav = document.getElementById('mobileNav');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (!mobileNav.contains(e.target) && !menuBtn.contains(e.target)) {
+                mobileNav.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
