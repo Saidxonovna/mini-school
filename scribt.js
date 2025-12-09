@@ -50,7 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Asosiy elementlarni topish
     const menuToggle = document.getElementById('menuToggle'); 
     const mainNav = document.getElementById('mainNav'); 
-    // Formani topish
+    
+    // ✅ TO'G'RILANDI: Formani ID'sini to'g'ri qidirish
     const registerForm = document.getElementById('register-form'); 
 
     // --- 1. Narxlarni yangilash (agar forma sahifasida bo'lsak) ---
@@ -75,6 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- 3. Formani Yuborish (register.html sahifasida ishlaydi) ---
     if (registerForm) {
+        console.log("Form topildi, submit event qo'shildi");
+        
         registerForm.addEventListener('submit', function (e) { 
             e.preventDefault(); // Oldindan to'xtatish
 
@@ -89,9 +92,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const selectedOption = courseSelect.options[courseSelect.selectedIndex];
             
             // data-price dan narxni olamiz
-            const priceToPay = parseFloat(selectedOption.getAttribute('data-price')); 
+            const priceToPay = parseFloat(selectedOption.getAttribute('data-price')) || 0; 
             
             const formattedPrice = formatPrice(priceToPay);
+
+            console.log("Ma'lumotlar saqlanmoqda:", {
+                name: name,
+                course: course,
+                phone: phone,
+                price: formattedPrice
+            });
 
             // Ma'lumotlarni localStoragga saqlash
             localStorage.setItem('regName', name); 
@@ -104,5 +114,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Payment sahifasiga o'tish
             window.location.href = PAYMENT_PAGE_URL;
         });
+    } else {
+        console.log("Form topilmadi. Quyidagi ID'larni tekshiring:");
+        console.log("register-form ID mavjudmi:", document.getElementById('register-form'));
+        console.log("registrationForm ID mavjudmi:", document.getElementById('registrationForm'));
     }
 });
