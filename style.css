@@ -506,7 +506,48 @@ button, .action-btn, .details-btn {
         font-size: 1em;
         margin: 20px 0;
     }
+    /* Menu toggle button - mobile */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    width: 30px;
+    height: 20px;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--color-text);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Desktop va mobile o'rtasidagi farqlar */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
     
+    .main-nav {
+        position: static;
+    }
+}
     /* Registration form */
     .registration-form-section {
         padding: 40px 20px;
