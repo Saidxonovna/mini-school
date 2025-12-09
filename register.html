@@ -128,16 +128,14 @@
                 e.target.value = formattedValue.trim();
             });
 
-            // 2. YANGI QISM: Forma yuborilganda tekshirish va payment.html ga yo'naltirish
+            // 2. Forma yuborilganda to'g'ridan-to'g'ri payment.html ga yo'naltirish
             registerForm.addEventListener('submit', function(e) {
                 e.preventDefault(); // Sahifa yangilanishini to'xtatish
                 
-                // Formadagi barcha talab qilingan maydonlar (required) to'ldirilganini tekshirish
+                // Formadagi maydonlar to'ldirilganini tekshirish
                 if (registerForm.checkValidity()) {
-                    // Agar hamma narsa to'g'ri bo'lsa, to'g'ridan-to'g'ri payment.html ga yo'naltirish
                     window.location.href = "https://www.saidxonovna.uz/payment.html";
                 }
-                // Agar maydonlar to'ldirilmagan bo'lsa, brauzer o'zi xato xabarini ko'rsatadi.
             });
 
         });
