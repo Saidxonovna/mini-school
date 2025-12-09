@@ -1,3 +1,977 @@
+2. register.html - UNIVERSAL DIZAYN
+
+```html
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ro'yxatdan O'tish | Saidxonovnas School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ===== UNIVERSAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1e293b;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* ===== HEADER ===== */
+        .main-header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .logo:hover {
+            transform: translateX(-3px);
+        }
+        
+        .logo-img {
+            height: 44px;
+            width: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.7em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        
+        .back-btn {
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            color: white;
+            padding: 11px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        .register-container {
+            max-width: 520px;
+            margin: 120px auto 50px;
+            padding: 0 20px;
+        }
+        
+        /* Title Section */
+        .title-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .title-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .title-section h1 {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 2.5em;
+            color: #1e293b;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .title-section p {
+            font-size: 1.15em;
+            color: #64748b;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: #ef4444;
+            font-weight: 700;
+        }
+        
+        /* Form Card */
+        .form-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08),
+                        0 1px 3px rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(239, 68, 68, 0.1);
+            animation: slideUp 0.6s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444, #f97316, #10b981);
+        }
+        
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 28px;
+            position: relative;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-label i {
+            color: #ef4444;
+            font-size: 1.2em;
+            width: 24px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 17px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #ef4444;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+        }
+        
+        .form-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 20px;
+            padding-right: 50px;
+            cursor: pointer;
+        }
+        
+        /* Course Options */
+        .course-options {
+            display: grid;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .course-option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .course-option:hover {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.03);
+            transform: translateX(5px);
+        }
+        
+        .course-option.selected {
+            border-color: #ef4444;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(249, 115, 22, 0.05));
+        }
+        
+        .course-icon {
+            font-size: 1.8em;
+            min-width: 40px;
+        }
+        
+        .course-content {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .course-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+        
+        .course-price {
+            color: #ef4444;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        
+        .course-discount {
+            color: #10b981;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .course-discount::before {
+            content: '🔥';
+        }
+        
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(239, 68, 68, 0.35);
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        /* Note Box */
+        .note-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+            color: #065f46;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.95em;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .note-box i {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .spinner {
+            border: 3px solid #f1f5f9;
+            border-top: 3px solid #ef4444;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Success Animation */
+        .success-check {
+            display: none;
+            font-size: 3em;
+            color: #10b981;
+            animation: checkmark 0.5s ease;
+        }
+        
+        @keyframes checkmark {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        /* ===== FOOTER ===== */
+        .main-footer {
+            background: #1e293b;
+            color: #cbd5e1;
+            padding: 40px 5%;
+            text-align: center;
+            margin-top: 80px;
+            border-radius: 30px 30px 0 0;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            background: rgba(239, 68, 68, 0.2);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-header {
+                padding: 15px;
+            }
+            
+            .logo-text {
+                font-size: 1.4em;
+            }
+            
+            .back-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+            
+            .register-container {
+                margin: 100px auto 30px;
+                padding: 0 15px;
+            }
+            
+            .title-section h1 {
+                font-size: 2em;
+            }
+            
+            .title-section p {
+                font-size: 1em;
+                padding: 0 10px;
+            }
+            
+            .form-card {
+                padding: 30px 25px;
+            }
+            
+            .form-input {
+                padding: 16px;
+            }
+            
+            .submit-btn {
+                padding: 18px;
+                font-size: 1.1em;
+            }
+            
+            .course-option {
+                padding: 15px;
+            }
+            
+            .course-icon {
+                font-size: 1.5em;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2em;
+            }
+            
+            .title-section h1 {
+                font-size: 1.7em;
+            }
+            
+            .title-icon {
+                font-size: 3em;
+            }
+            
+            .form-card {
+                padding: 25px 20px;
+            }
+            
+            .form-label {
+                font-size: 1em;
+            }
+            
+            .course-option {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .course-content {
+                text-align: center;
+            }
+        }
+        
+        /* ===== VALIDATION STYLES ===== */
+        .error-message {
+            color: #ef4444;
+            font-size: 0.9em;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .form-input.error {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.05);
+        }
+        
+        .form-input.success {
+            border-color: #10b981;
+        }
+        
+        /* ===== CUSTOM CHECKBOX ===== */
+        .checkmark {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .course-option.selected .checkmark {
+            background: #ef4444;
+            border-color: #ef4444;
+        }
+        
+        .course-option.selected .checkmark::after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Saidxonovnas School" class="logo-img">
+            <span class="logo-text">Saidxonovnas School</span>
+        </a>
+        
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Bosh Sahifa
+        </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="register-container">
+        <!-- Title -->
+        <div class="title-section">
+            <div class="title-icon">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <h1>RO'YXATDAN O'TISH</h1>
+            <p>
+                Kursni tanlang, ma'lumotlaringizni kiriting va 
+                <span class="highlight">50% chegirma</span> bilan ro'yxatdan o'ting! 
+                Menejer siz bilan tez orada bog'lanadi.
+            </p>
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <form id="registerForm">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name" class="form-label">
+                        <i class="fas fa-user"></i> Ismingiz
+                    </label>
+                    <input type="text" 
+                           id="name" 
+                           name="name" 
+                           class="form-input" 
+                           placeholder="To'liq ismingizni kiriting" 
+                           required
+                           autocomplete="name">
+                    <div class="error-message" id="nameError" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i> Iltimos, ismingizni kiriting
+                    </div>
+                </div>
+
+                <!-- Course Selection -->
+                <div class="form-group">
+                    <label for="course" class="form-label">
+                        <i class="fas fa-book-open"></i> Kursni tanlang
+                    </label>
+                    
+                    <select id="courseSelect" 
+                            name="course" 
+                            class="form-input form-select" 
+                            required
+                            onchange="updateCourseSelection(this)">
+                        <option value="" disabled selected>--- Kursni tanlang ---</option>
+                        <option value="Xitoy Kursi" data-price="50000">
+                            Xitoydan Tovar Zakaz Qilish Kursi
+                        </option>
+                        <option value="Optom Kursi" data-price="125000">
+                            Optom Tavarlar Kursi
+                        </option>
+                    </select>
+                    
+                    <!-- Course Options Display -->
+                    <div class="course-options" id="courseOptions">
+                        <div class="course-option" onclick="selectCourse('Xitoy Kursi', 50000)">
+                            <div class="course-icon">🇨🇳</div>
+                            <div class="course-content">
+                                <div class="course-name">Xitoydan Tovar Zakaz Qilish Kursi</div>
+                                <div class="course-price">50,000 UZS</div>
+                                <div class="course-discount">50% chegirma bilan</div>
+                            </div>
+                            <div class="checkmark"></div>
+                        </div>
+                        
+                        <div class="course-option" onclick="selectCourse('Optom Kursi', 125000)">
+                            <div class="course-icon">📈</div>
+                            <div class="course-content">
+                                <div class="course-name">Optom Tavarlar Kursi</div>
+                                <div class="course-price">125,000 UZS</div>
+                                <div class="course-discount">50% chegirma bilan</div>
+                            </div>
+                            <div class="checkmark"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="error-message" id="courseError" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i> Iltimos, kursni tanlang
+                    </div>
+                </div>
+                
+                <!-- Phone Field -->
+                <div class="form-group">
+                    <label for="phone" class="form-label">
+                        <i class="fas fa-phone"></i> Telefon raqamingiz
+                    </label>
+                    <input type="tel" 
+                           id="phone" 
+                           name="phone" 
+                           class="form-input" 
+                           placeholder="+998 (XX) XXX-XX-XX" 
+                           required
+                           autocomplete="tel">
+                    <div class="error-message" id="phoneError" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i> Iltimos, to'g'ri telefon raqamini kiriting
+                    </div>
+                </div>
+                
+                <!-- Hidden fields for URL parameters -->
+                <input type="hidden" id="selectedCourse" name="selectedCourse" value="">
+                <input type="hidden" id="selectedPrice" name="price" value="">
+                
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-check-circle"></i>
+                    RO'YXATDAN O'TISH VA TO'LOVGA O'TISH
+                </button>
+                
+                <!-- Loading Indicator -->
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 10px; color: #64748b;">Ma'lumotlaringiz yuborilmoqda...</p>
+                </div>
+                
+                <!-- Success Check -->
+                <div class="success-check" id="successCheck">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+            </form>
+
+            <!-- Note Box -->
+            <div class="note-box">
+                <i class="fas fa-info-circle"></i>
+                Ro'yxatdan o'tgandan so'ng, sizni to'lov sahifasiga yo'naltiramiz
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p style="font-size: 1.1em; margin-bottom: 20px;">
+            &copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.
+        </p>
+        <div class="footer-links">
+            <a href="index.html" class="footer-link">Bosh Sahifa</a>
+            <a href="#contact" class="footer-link">Aloqa</a>
+            <a href="tel:+998945165167" class="footer-link">Qo'ng'iroq qilish</a>
+        </div>
+    </footer>
+
+    <script>
+        // Selected course data
+        let selectedCourse = {
+            name: '',
+            price: '0'
+        };
+        
+        // Format phone number
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 0 && !value.startsWith('998')) {
+                if (value.length <= 9) {
+                    value = '998' + value;
+                }
+            }
+            value = value.substring(0, 12);
+            
+            let formatted = '';
+            if (value.length >= 3) {
+                formatted = '+998';
+                if (value.length > 3) {
+                    formatted += ' (' + value.substring(3, 5);
+                    if (value.length > 5) {
+                        formatted += ') ' + value.substring(5, 8);
+                        if (value.length > 8) {
+                            formatted += '-' + value.substring(8, 10);
+                            if (value.length > 10) {
+                                formatted += '-' + value.substring(10, 12);
+                            }
+                        }
+                    }
+                }
+            }
+            
+            e.target.value = formatted;
+        });
+        
+        // Select course from options
+        function selectCourse(courseName, price) {
+            // Update selected course
+            selectedCourse = {
+                name: courseName,
+                price: price.toString()
+            };
+            
+            // Update select element
+            document.getElementById('courseSelect').value = courseName;
+            
+            // Update hidden fields
+            document.getElementById('selectedCourse').value = courseName;
+            document.getElementById('selectedPrice').value = price;
+            
+            // Update UI
+            const options = document.querySelectorAll('.course-option');
+            options.forEach(option => {
+                option.classList.remove('selected');
+                const nameDiv = option.querySelector('.course-name');
+                if (nameDiv && nameDiv.textContent.includes(courseName)) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            // Clear error
+            document.getElementById('courseError').style.display = 'none';
+            document.getElementById('courseSelect').classList.remove('error');
+            
+            // Animate selection
+            const selectedOption = document.querySelector('.course-option.selected');
+            if (selectedOption) {
+                selectedOption.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    selectedOption.style.transform = 'scale(1)';
+                }, 150);
+            }
+        }
+        
+        // Update course selection from select element
+        function updateCourseSelection(select) {
+            const selectedOption = select.options[select.selectedIndex];
+            if (selectedOption.value) {
+                const price = selectedOption.getAttribute('data-price') || '0';
+                selectCourse(selectedOption.value, parseInt(price));
+            }
+        }
+        
+        // Validate form
+        function validateForm() {
+            let isValid = true;
+            
+            // Name validation
+            const name = document.getElementById('name').value.trim();
+            const nameError = document.getElementById('nameError');
+            const nameInput = document.getElementById('name');
+            
+            if (!name) {
+                nameError.style.display = 'flex';
+                nameInput.classList.add('error');
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+                nameInput.classList.remove('error');
+                nameInput.classList.add('success');
+            }
+            
+            // Course validation
+            const courseError = document.getElementById('courseError');
+            const courseSelect = document.getElementById('courseSelect');
+            
+            if (!selectedCourse.name) {
+                courseError.style.display = 'flex';
+                courseSelect.classList.add('error');
+                isValid = false;
+            } else {
+                courseError.style.display = 'none';
+                courseSelect.classList.remove('error');
+            }
+            
+            // Phone validation
+            const phone = document.getElementById('phone').value.replace(/\D/g, '');
+            const phoneError = document.getElementById('phoneError');
+            const phoneInput = document.getElementById('phone');
+            
+            if (!phone || phone.length < 9) {
+                phoneError.style.display = 'flex';
+                phoneInput.classList.add('error');
+                isValid = false;
+            } else {
+                phoneError.style.display = 'none';
+                phoneInput.classList.remove('error');
+                phoneInput.classList.add('success');
+            }
+            
+            return isValid;
+        }
+        
+        // Form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            if (!validateForm()) {
+                // Shake form for error
+                this.style.animation = 'shake 0.5s ease';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 500);
+                return;
+            }
+            
+            // Show loading
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            
+            submitBtn.style.display = 'none';
+            loading.style.display = 'block';
+            
+            // Prepare data
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.replace(/\D/g, '');
+            const fullPhone = phone.length === 9 ? '+998' + phone : phone;
+            
+            // Encode data for URL
+            const params = new URLSearchParams();
+            params.append('name', encodeURIComponent(name));
+            params.append('course', encodeURIComponent(selectedCourse.name));
+            params.append('price', selectedCourse.price);
+            params.append('phone', encodeURIComponent(fullPhone));
+            
+            // Save to localStorage as backup
+            localStorage.setItem('regName', name);
+            localStorage.setItem('regCourse', selectedCourse.name);
+            localStorage.setItem('regPrice', selectedCourse.price + ' UZS');
+            localStorage.setItem('regPhone', fullPhone);
+            
+            // Simulate loading delay
+            setTimeout(() => {
+                // Show success animation
+                loading.style.display = 'none';
+                const successCheck = document.getElementById('successCheck');
+                successCheck.style.display = 'block';
+                
+                // Redirect after animation
+                setTimeout(() => {
+                    window.location.href = 'payment.html?' + params.toString();
+                }, 1000);
+            }, 1500);
+        });
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Focus on name input
+            document.getElementById('name').focus();
+            
+            // Add input validation on blur
+            const inputs = document.querySelectorAll('.form-input');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value.trim()) {
+                        this.classList.add('success');
+                    }
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.main-header');
+                if (window.scrollY > 50) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.92)';
+                    header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
+                }
+            });
+        });
+        
+        // Prevent form submission on Enter in inputs
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && this.type !== 'submit') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+```
+
+3. payment.html - UNIVERSAL DIZAYN
+
+```html
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -7,69 +981,106 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* ===== UNIVERSAL STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Poppins', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            color: #333;
+            color: #1e293b;
+            position: relative;
         }
         
-        /* Header */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 100px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        /* ===== HEADER ===== */
         .main-header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 18px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .logo:hover {
+            transform: translateX(-3px);
         }
         
         .logo-img {
-            height: 45px;
+            height: 44px;
             width: auto;
-            border-radius: 8px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         
         .logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.6em;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.7em;
             font-weight: 700;
-            color: #1A1A2E;
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
         }
         
         .back-btn {
-            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
             color: white;
-            padding: 10px 25px;
-            border-radius: 8px;
-            text-decoration: none;
+            padding: 11px 28px;
+            border-radius: 10px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            font-size: 0.95em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
         }
         
         .back-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
         }
         
-        /* Main Container */
+        /* ===== MAIN CONTENT ===== */
         .payment-container {
             max-width: 800px;
             margin: 120px auto 50px;
@@ -81,12 +1092,17 @@
             text-align: center;
             margin-bottom: 40px;
             color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
         
         .title-icon {
             font-size: 4em;
             margin-bottom: 20px;
             animation: float 3s ease-in-out infinite;
+            background: linear-gradient(135deg, white, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         @keyframes float {
@@ -95,14 +1111,13 @@
         }
         
         .title-section h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8em;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 2.5em;
             margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         
         .title-section p {
-            font-size: 1.2em;
+            font-size: 1.15em;
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
@@ -110,13 +1125,17 @@
         
         /* Payment Card */
         .payment-card {
-            background: white;
-            border-radius: 25px;
-            padding: 50px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15),
+                        0 1px 3px rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
             animation: slideUp 0.6s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         @keyframes slideUp {
@@ -136,11 +1155,11 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, #FF6B6B, #FF8E53, #17C3B2);
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444, #f97316, #10b981);
         }
         
-        /* User Info */
+        /* User Info Grid */
         .user-info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -149,131 +1168,170 @@
         }
         
         .info-box {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 25px;
             border-radius: 15px;
-            border-left: 5px solid #FF6B6B;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .info-box:hover {
-            transform: translateY(-5px);
-        }
-        
-        .info-label {
-            font-size: 0.9em;
-            color: #666;
-            margin-bottom: 8px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .info-value {
-            font-size: 1.4em;
-            font-weight: 700;
-            color: #1A1A2E;
-        }
-        
-        /* Price Box */
-        .price-box {
-            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
-            color: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 40px 0;
+            border: 1px solid rgba(239, 68, 68, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
         
-        .price-box::before {
-            content: '🔥';
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        
+        .info-box::before {
+            content: '';
             position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 4em;
-            opacity: 0.2;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #ef4444, #f97316);
+        }
+        
+        .info-label {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-bottom: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-label i {
+            color: #ef4444;
+            font-size: 1.1em;
+        }
+        
+        .info-value {
+            font-size: 1.35em;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.4;
+        }
+        
+        /* Price Box */
+        .price-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(249, 115, 22, 0.9));
+            color: white;
+            padding: 40px;
+            border-radius: 18px;
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .price-box::before {
+            content: '💎';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            font-size: 8em;
+            opacity: 0.1;
+            transform: rotate(15deg);
         }
         
         .price-box h3 {
-            font-size: 1.8em;
+            font-size: 1.6em;
             margin-bottom: 20px;
             opacity: 0.9;
         }
         
         .price-amount {
-            font-size: 4em;
+            font-size: 3.5em;
             font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             margin: 10px 0;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .discount-badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: rgba(255, 255, 255, 0.2);
             padding: 8px 20px;
             border-radius: 50px;
             font-size: 1.1em;
             margin-top: 15px;
             backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
         
         /* Instructions */
         .instructions {
-            background: #fff9e6;
-            border: 2px solid #FFD700;
-            border-radius: 20px;
+            background: rgba(255, 249, 230, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 18px;
             padding: 40px;
             margin: 50px 0;
             position: relative;
         }
         
         .instructions h3 {
-            color: #FF6B6B;
+            color: #ef4444;
             margin-bottom: 25px;
-            font-size: 1.6em;
+            font-size: 1.5em;
             display: flex;
             align-items: center;
             gap: 15px;
         }
         
+        /* Card Display */
         .card-display {
             text-align: center;
             margin: 30px 0;
             padding: 30px;
-            background: white;
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 15px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid rgba(224, 224, 224, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
         .card-number {
-            font-family: 'Courier New', monospace;
-            font-size: 2.5em;
+            font-family: 'Courier New', monospace, 'SF Mono', Menlo, Monaco, Consolas;
+            font-size: 2.3em;
             font-weight: bold;
-            color: #1A1A2E;
-            letter-spacing: 4px;
+            color: #1e293b;
+            letter-spacing: 3px;
             margin: 20px 0;
             padding: 20px;
-            background: #f8f9fa;
+            background: rgba(248, 249, 250, 0.8);
             border-radius: 12px;
-            border: 2px dashed #FF6B6B;
+            border: 2px dashed rgba(239, 68, 68, 0.3);
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
         }
         
         .receiver-info {
             font-size: 1.2em;
             margin-top: 20px;
             padding: 15px;
-            background: #f0f8ff;
+            background: rgba(240, 248, 255, 0.6);
             border-radius: 10px;
             display: inline-block;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
         
         /* Warning Box */
         .warning-box {
-            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            background: linear-gradient(135deg, rgba(255, 234, 167, 0.8), rgba(250, 177, 160, 0.8));
             color: #d63031;
             padding: 25px;
             border-radius: 15px;
@@ -282,18 +1340,23 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
         
         .warning-box i {
-            font-size: 2em;
+            font-size: 1.8em;
+            flex-shrink: 0;
         }
         
         /* Steps */
         .steps {
-            background: #e8f5e9;
+            background: rgba(232, 245, 233, 0.7);
             padding: 30px;
             border-radius: 15px;
             margin-top: 30px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
         
         .steps h4 {
@@ -315,7 +1378,8 @@
             margin-bottom: 15px;
             padding-left: 50px;
             position: relative;
-            font-size: 1.1em;
+            font-size: 1.05em;
+            color: #475569;
         }
         
         .step-list li::before {
@@ -332,6 +1396,7 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            font-size: 0.9em;
         }
         
         /* Action Buttons */
@@ -347,13 +1412,16 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            padding: 25px;
+            padding: 22px;
             border-radius: 15px;
-            font-size: 1.3em;
+            font-size: 1.2em;
             font-weight: 700;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .telegram-action {
@@ -363,21 +1431,21 @@
         }
         
         .telegram-action:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 136, 204, 0.4);
         }
         
         .edit-action {
-            background: white;
-            color: #666;
-            border: 2px solid #ddd;
+            background: rgba(255, 255, 255, 0.8);
+            color: #64748b;
+            border: 2px solid rgba(221, 221, 221, 0.5);
         }
         
         .edit-action:hover {
-            background: #f8f9fa;
-            transform: translateY(-5px);
-            border-color: #FF6B6B;
-            color: #FF6B6B;
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #ef4444;
         }
         
         /* Contact Help */
@@ -385,15 +1453,18 @@
             text-align: center;
             margin-top: 60px;
             padding: 40px;
-            background: white;
-            border-radius: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .contact-help h4 {
-            color: #17C3B2;
+            color: #10b981;
             margin-bottom: 25px;
-            font-size: 1.5em;
+            font-size: 1.4em;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -403,7 +1474,7 @@
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             flex-wrap: wrap;
             margin-top: 25px;
         }
@@ -411,104 +1482,124 @@
         .contact-link {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             padding: 15px 25px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            background: #f8f9fa;
-            color: #333;
+            background: rgba(248, 249, 250, 0.8);
+            color: #1e293b;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
         
         .contact-link:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
         .contact-link:nth-child(1):hover { background: #25D366; color: white; }
         .contact-link:nth-child(2):hover { background: #0088cc; color: white; }
-        .contact-link:nth-child(3):hover { background: #FF6B6B; color: white; }
+        .contact-link:nth-child(3):hover { background: #ef4444; color: white; }
         
         /* No Data State */
         .no-data {
             text-align: center;
             padding: 60px 40px;
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
             margin: 40px 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
         
         .no-data-icon {
             font-size: 4em;
             color: #d63031;
             margin-bottom: 20px;
+            background: linear-gradient(135deg, #d63031, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .no-data h3 {
             color: #d63031;
             margin-bottom: 20px;
-            font-size: 1.8em;
+            font-size: 1.6em;
         }
         
         .no-data-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ef4444, #f97316);
             color: white;
             padding: 18px 35px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.2em;
+            font-size: 1.1em;
             margin-top: 25px;
             transition: all 0.3s ease;
         }
         
         .no-data-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.3);
         }
         
-        /* Footer */
+        /* ===== FOOTER ===== */
         .main-footer {
-            background: #1A1A2E;
-            color: white;
+            background: rgba(30, 41, 59, 0.95);
+            color: #cbd5e1;
             padding: 40px 5%;
             text-align: center;
             margin-top: 80px;
             border-radius: 30px 30px 0 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 28px;
             margin: 30px 0;
             flex-wrap: wrap;
         }
         
-        .footer-links a {
-            color: white;
+        .footer-link {
+            color: #cbd5e1;
             text-decoration: none;
-            padding: 10px 25px;
+            padding: 10px 22px;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
+            font-size: 0.95em;
         }
         
-        .footer-links a:hover {
-            background: rgba(255, 107, 107, 0.3);
-            transform: translateY(-3px);
+        .footer-link:hover {
+            background: rgba(239, 68, 68, 0.2);
+            color: white;
+            transform: translateY(-2px);
         }
         
-        /* Responsive Design */
+        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
             .main-header {
                 padding: 15px;
             }
             
             .logo-text {
-                font-size: 1.3em;
+                font-size: 1.4em;
+            }
+            
+            .back-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
             }
             
             .payment-container {
@@ -517,11 +1608,12 @@
             }
             
             .title-section h1 {
-                font-size: 2.2em;
+                font-size: 2em;
             }
             
             .title-section p {
                 font-size: 1em;
+                padding: 0 10px;
             }
             
             .payment-card {
@@ -539,7 +1631,7 @@
             }
             
             .price-amount {
-                font-size: 3em;
+                font-size: 2.8em;
             }
             
             .card-number {
@@ -561,11 +1653,19 @@
             .contact-link {
                 justify-content: center;
             }
+            
+            .instructions, .steps {
+                padding: 25px;
+            }
         }
         
         @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2em;
+            }
+            
             .title-section h1 {
-                font-size: 1.8em;
+                font-size: 1.7em;
             }
             
             .title-icon {
@@ -573,12 +1673,13 @@
             }
             
             .price-amount {
-                font-size: 2.5em;
+                font-size: 2.2em;
             }
             
             .card-number {
                 font-size: 1.5em;
                 letter-spacing: 1px;
+                padding: 15px 10px;
             }
             
             .footer-links {
@@ -587,15 +1688,46 @@
                 align-items: center;
             }
         }
+        
+        /* ===== ANIMATIONS ===== */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #dc2626, #ea580c);
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="main-header">
-        <div class="logo">
+        <a href="index.html" class="logo">
             <img src="logo.png" alt="Saidxonovnas School" class="logo-img">
             <span class="logo-text">Saidxonovnas School</span>
-        </div>
+        </a>
+        
         <a href="register.html" class="back-btn">
             <i class="fas fa-arrow-left"></i> Ortga
         </a>
@@ -622,10 +1754,10 @@
                 <h3><i class="fas fa-money-bill-wave"></i> Pul O'tkazish Yo'riqnomasi</h3>
                 
                 <div class="card-display">
-                    <p style="font-weight: 600; margin-bottom: 15px; font-size: 1.2em;">UZCARD / HUMO karta raqami:</p>
-                    <div class="card-number">8600 6827 1256 6100</div>
+                    <p style="font-weight: 600; margin-bottom: 15px; font-size: 1.15em;">UZCARD / HUMO karta raqami:</p>
+                    <div class="card-number pulse">8600 6827 1256 6100</div>
                     <div class="receiver-info">
-                        <strong>Qabul qiluvchi:</strong> Bositxonova Muslimaxon
+                        <strong><i class="fas fa-user-check"></i> Qabul qiluvchi:</strong> Bositxonova Muslimaxon
                     </div>
                 </div>
                 
@@ -664,7 +1796,7 @@
         <!-- Contact Help -->
         <div class="contact-help">
             <h4><i class="fas fa-headset"></i> Qo'shimcha Yordam Kerakmi?</h4>
-            <p style="margin-bottom: 25px; font-size: 1.1em;">Har qanday savol yoki muammo bo'lsa, biz bilan bog'laning:</p>
+            <p style="margin-bottom: 25px; font-size: 1.05em; color: #475569;">Har qanday savol yoki muammo bo'lsa, biz bilan bog'laning:</p>
             <div class="contact-links">
                 <a href="https://t.me/Saidxonovnas_School" target="_blank" class="contact-link">
                     <i class="fab fa-telegram"></i> Telegram
@@ -681,13 +1813,13 @@
 
     <!-- Footer -->
     <footer class="main-footer">
-        <p style="font-size: 1.1em; margin-bottom: 20px;">
+        <p style="font-size: 1.1em; margin-bottom: 20px; color: #e2e8f0;">
             &copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.
         </p>
         <div class="footer-links">
-            <a href="index.html">Bosh Sahifa</a>
-            <a href="register.html">Ro'yxatdan O'tish</a>
-            <a href="#contact">Aloqa</a>
+            <a href="index.html" class="footer-link">Bosh Sahifa</a>
+            <a href="register.html" class="footer-link">Ro'yxatdan O'tish</a>
+            <a href="#contact" class="footer-link">Aloqa</a>
         </div>
     </footer>
 
@@ -709,8 +1841,11 @@
         
         // Narxni formatlash
         function formatPrice(amount) {
-            if (!amount || amount === '0') return '0 UZS';
-            return new Intl.NumberFormat('uz-UZ').format(amount) + ' UZS';
+            if (!amount || amount === '0' || amount === '0 UZS') return '0 UZS';
+            
+            // Remove "UZS" if present and convert to number
+            const num = parseInt(amount.toString().replace(/[^0-9]/g, '')) || 0;
+            return new Intl.NumberFormat('uz-UZ').format(num) + ' UZS';
         }
         
         // Kurs nomidan narxni aniqlash
@@ -744,6 +1879,9 @@
                 // Narxni aniqlash
                 const price = getCoursePrice(course, priceParam);
                 
+                // Format phone for display
+                const displayPhone = phone.replace(/(\+998)(\d{2})(\d{3})(\d{2})(\d{2})/, '$1 ($2) $3-$4-$5');
+                
                 // HTML yaratish
                 displayDiv.innerHTML = `
                     <div class="user-info-grid">
@@ -759,7 +1897,7 @@
                         
                         <div class="info-box">
                             <div class="info-label"><i class="fas fa-phone"></i> Telefon Raqam</div>
-                            <div class="info-value">${phone}</div>
+                            <div class="info-value">${displayPhone}</div>
                         </div>
                     </div>
                     
@@ -772,42 +1910,180 @@
                     </div>
                 `;
                 
-                // LocalStorage ga saqlash
+                // LocalStorage ga saqlash (backup uchun)
                 localStorage.setItem('paymentName', name);
                 localStorage.setItem('paymentCourse', course);
                 localStorage.setItem('paymentPhone', phone);
                 localStorage.setItem('paymentPrice', price);
                 
+                // Animate elements
+                setTimeout(() => {
+                    const infoBoxes = document.querySelectorAll('.info-box');
+                    infoBoxes.forEach((box, index) => {
+                        setTimeout(() => {
+                            box.style.opacity = '0';
+                            box.style.transform = 'translateY(20px)';
+                            box.style.transition = 'all 0.5s ease';
+                            
+                            setTimeout(() => {
+                                box.style.opacity = '1';
+                                box.style.transform = 'translateY(0)';
+                            }, 50);
+                        }, index * 100);
+                    });
+                    
+                    // Animate price box
+                    const priceBox = document.querySelector('.price-box');
+                    setTimeout(() => {
+                        priceBox.style.opacity = '0';
+                        priceBox.style.transform = 'scale(0.9)';
+                        priceBox.style.transition = 'all 0.5s ease';
+                        
+                        setTimeout(() => {
+                            priceBox.style.opacity = '1';
+                            priceBox.style.transform = 'scale(1)';
+                        }, 50);
+                    }, 300);
+                }, 300);
+                
             } else {
-                // Ma'lumotlar yo'q bo'lsa
-                displayDiv.innerHTML = `
-                    <div class="no-data">
-                        <div class="no-data-icon">
-                            <i class="fas fa-exclamation-circle"></i>
+                // Ma'lumotlar yo'q bo'lsa (localStorage dan o'qish)
+                const savedName = localStorage.getItem('regName');
+                const savedCourse = localStorage.getItem('regCourse');
+                const savedPrice = localStorage.getItem('regPrice');
+                const savedPhone = localStorage.getItem('regPhone');
+                
+                if (savedName && savedCourse) {
+                    // LocalStorage dan ma'lumotlar bor
+                    const price = formatPrice(savedPrice);
+                    const displayPhone = savedPhone ? savedPhone.replace(/(\+998)(\d{2})(\d{3})(\d{2})(\d{2})/, '$1 ($2) $3-$4-$5') : 'Kiritilmagan';
+                    
+                    displayDiv.innerHTML = `
+                        <div class="user-info-grid">
+                            <div class="info-box">
+                                <div class="info-label"><i class="fas fa-user"></i> Ism Familiya</div>
+                                <div class="info-value">${savedName}</div>
+                            </div>
+                            
+                            <div class="info-box">
+                                <div class="info-label"><i class="fas fa-book"></i> Tanlangan Kurs</div>
+                                <div class="info-value">${savedCourse}</div>
+                            </div>
+                            
+                            <div class="info-box">
+                                <div class="info-label"><i class="fas fa-phone"></i> Telefon Raqam</div>
+                                <div class="info-value">${displayPhone}</div>
+                            </div>
                         </div>
-                        <h3>Ma'lumotlar Topilmadi</h3>
-                        <p style="font-size: 1.1em; margin-bottom: 20px;">
-                            Iltimos, avval ro'yxatdan o'ting yoki sahifani qaytadan yuklang.
-                        </p>
-                        <a href="register.html" class="no-data-btn">
-                            <i class="fas fa-user-plus"></i> RO'YXATDAN O'TISH SAHIFASIGA O'TISH
-                        </a>
-                    </div>
-                `;
+                        
+                        <div class="price-box">
+                            <h3>To'lanadigan Summa</h3>
+                            <div class="price-amount">${price}</div>
+                            <div class="discount-badge">
+                                <i class="fas fa-percentage"></i> 50% chegirma bilan
+                            </div>
+                        </div>
+                        
+                        <div class="warning-box" style="margin-top: 20px;">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <strong>Eslatma:</strong> Bu ma'lumotlar LocalStorage dan olingan. Agar yangilash kerak bo'lsa, "Ma'lumotlarni O'zgartirish" tugmasini bosing.
+                            </div>
+                        </div>
+                    `;
+                    
+                } else {
+                    // Hech qanday ma'lumot yo'q
+                    displayDiv.innerHTML = `
+                        <div class="no-data">
+                            <div class="no-data-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <h3>Ma'lumotlar Topilmadi</h3>
+                            <p style="font-size: 1.05em; margin-bottom: 20px; color: #475569;">
+                                Iltimos, avval ro'yxatdan o'ting yoki sahifani qaytadan yuklang.
+                            </p>
+                            <a href="register.html" class="no-data-btn">
+                                <i class="fas fa-user-plus"></i> RO'YXATDAN O'TISH SAHIFASIGA O'TISH
+                            </a>
+                        </div>
+                    `;
+                }
             }
         });
         
-        // Scroll effekti header uchun
+        // Header scroll effekti
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.main-header');
             if (window.scrollY > 50) {
                 header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.92)';
+                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
             }
         });
+        
+        // Card number copy function
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('card-number')) {
+                const cardNumber = '8600 6827 1256 6100';
+                navigator.clipboard.writeText(cardNumber.replace(/\s/g, ''))
+                    .then(() => {
+                        const originalText = e.target.textContent;
+                        e.target.textContent = 'Nusxalandi! ✓';
+                        e.target.style.color = '#10b981';
+                        
+                        setTimeout(() => {
+                            e.target.textContent = originalText;
+                            e.target.style.color = '';
+                        }, 1500);
+                    })
+                    .catch(err => {
+                        console.error('Nusxalashda xatolik:', err);
+                    });
+            }
+        });
+        
+        // Add hover effect to action buttons
+        document.querySelectorAll('.action-btn-large').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Add click animation to buttons
+        document.querySelectorAll('.action-btn-large, .contact-link, .footer-link').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        // Console greeting
+        console.log('%c💳 To\'lov sahifasi %c\nSaidxonovnas School - Professional ta\'lim', 
+            'color: #ef4444; font-size: 16px; font-weight: bold;',
+            'color: #475569; font-size: 12px;');
     </script>
 </body>
 </html>
+```
+
+HAR UCHTA SAHIFA ENDI: 🎯
+
+1. ✅ Bir xil dizayn - Barcha sahifalar bir xil style
+2. ✅ Mac OS optimized - Glassmorphism, blur effects
+3. ✅ Windows optimized - Gradient, shadows, clear typography
+4. ✅ Mobile responsive - Barcha ekran o'lchamlari
+5. ✅ Professional colors - Red-orange gradient theme
+6. ✅ Smooth animations - Yumshoq o'tishlar
+7. ✅ Error handling - Validation va backup systems
+8. ✅ User friendly - Intuitive interface
+
+Endi har 3 sahifa ham bir-biriga mos va professional ko'rinadi! 🚀
