@@ -101,7 +101,6 @@
             phoneInput.addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\D/g, ''); 
 
-                // Agar O'zbekiston raqami bo'lsa, avtomatik ravishda +998 ni qo'shamiz
                 if (value.length > 0 && !value.startsWith('998') && value.length < 12) {
                      value = '998' + value;
                 }
@@ -113,14 +112,12 @@
                     
                     if (value.length > 3) formattedValue += ' ';
 
-                    // Kod qismi
                     if (value.length > 5) {
                         formattedValue += `(${value.slice(3, 5)})`;
                     } else if (value.length > 3) {
                         formattedValue += `(${value.slice(3)}`;
                     }
 
-                    // Raqamning qolgan qismi
                     if (value.length > 5) {
                         formattedValue += ` ${value.slice(5, 8)}`;
                     }
@@ -139,13 +136,12 @@
                 e.target.value = formattedValue.trim();
             });
 
-            // 2. YANGI QISM: Kurs tanlanganda narxni yashirin inputga yozish
+            // 2. Kurs tanlanganda narxni yashirin inputga yozish
             courseSelect.addEventListener('change', function() {
                 const selectedOption = this.options[this.selectedIndex];
                 const coursePrice = selectedOption.getAttribute('data-price');
                 
                 if (coursePrice) {
-                    // Masalan: "50.000 UZS - 50% Chegirma" qismidan faqat "50.000 UZS" ni ajratib oladi
                     const priceText = selectedOption.textContent.split('(')[1].split(')')[0].trim(); 
                     priceHiddenInput.value = priceText;
                 } else {
@@ -153,7 +149,6 @@
                 }
             });
             
-            // Sahifa yuklanganda narxni boshlang'ich qiymatga o'rnatish
             courseSelect.dispatchEvent(new Event('change')); 
         });
     </script>
