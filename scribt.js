@@ -102,7 +102,34 @@ document.addEventListener('DOMContentLoaded', function () {
                 phone: phone,
                 price: formattedPrice
             });
-
+// scribt.js fayliga quyidagini qo'shing
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Menudan tashqariga bosilganda menyu yopilishi
+        document.addEventListener('click', function(event) {
+            if (!menuToggle.contains(event.target) && !mainNav.contains(event.target)) {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    }
+    
+    // Mobil sahifalarda o'lcham o'zgarganda menyuni yopish
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mainNav) {
+            mainNav.classList.remove('active');
+            if (menuToggle) menuToggle.classList.remove('active');
+        }
+    });
+});
             // Ma'lumotlarni localStoragga saqlash
             localStorage.setItem('regName', name); 
             localStorage.setItem('regCourse', course); 
