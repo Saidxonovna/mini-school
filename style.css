@@ -432,3 +432,192 @@ button, .action-btn, .details-btn {
     min-height: 44px;
     min-width: 44px;
 }
+
+/* Tablet va mobil qurilmalar uchun (768px dan kichik) */
+@media (max-width: 768px) {
+    /* Asosiy tuzilmalar */
+    body {
+        font-size: 14px;
+        overflow-x: hidden;
+    }
+    
+    /* Header */
+    .main-header {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        font-size: 1.1em;
+    }
+    
+    .logo-img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Navigation menu */
+    .main-nav ul {
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        padding: 20px;
+        border-radius: 0 0 10px 10px;
+        display: none;
+    }
+    
+    .main-nav.active ul {
+        display: flex;
+    }
+    
+    .main-nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .main-nav ul li a {
+        padding: 12px;
+        display: block;
+        border-bottom: 1px solid #eee;
+    }
+    
+    /* Menu toggle button */
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .desktop-only {
+        display: none !important;
+    }
+    
+    /* Hero section */
+    .hero-content h1 {
+        font-size: 2em;
+        line-height: 1.3;
+    }
+    
+    .hero-content p {
+        font-size: 1em;
+        margin: 20px 0;
+    }
+    
+    /* Registration form */
+    .registration-form-section {
+        padding: 40px 20px;
+    }
+    
+    .register-form input,
+    .register-form select {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    /* Payment page */
+    .payment-wrapper {
+        padding: 30px 15px;
+    }
+    
+    .payment-details {
+        padding: 20px;
+    }
+    
+    .payment-details h4 {
+        font-size: 1.1em;
+    }
+    
+    .payment-details p {
+        font-size: 0.95em;
+    }
+    
+    /* Buttons */
+    .action-btn,
+    .promo-btn,
+    .payment-btn {
+        padding: 12px 20px;
+        font-size: 0.9em;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Footer */
+    .main-footer {
+        padding: 30px 20px;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
+
+/* Kichik telefonlar (480px dan kichik) */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+    
+    .content-wrapper {
+        padding: 20px;
+    }
+    
+    .payment-details h3 {
+        font-size: 1.3em;
+    }
+    
+    .logo-text {
+        font-size: 0.9em;
+    }
+    
+    /* Karta raqami mobilda */
+    .payment-details code {
+        font-size: 1.3em;
+        word-wrap: break-word;
+        display: inline-block;
+        padding: 10px;
+    }
+}
+
+/* Katta ekranlar (1200px dan katta) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+    
+    .hero-content h1 {
+        font-size: 3.5em;
+    }
+}
+
+/* Landscape mode uchun */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 100vh;
+    }
+    
+    .register-page-wrapper {
+        min-height: 100vh;
+        padding: 40px 20px;
+    }
+}
+
+/* Print uchun */
+@media print {
+    .menu-toggle,
+    .action-btn,
+    .payment-btn {
+        display: none !important;
+    }
+    
+    .payment-details {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}
