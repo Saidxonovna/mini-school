@@ -9,224 +9,579 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Mobile styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        /* Header */
+        .main-header {
+            background: #1A1A2E;
+            color: white;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-img {
+            height: 45px;
+            width: auto;
+            border-radius: 8px;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6em;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8em;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        /* Main Container */
+        .register-container {
+            max-width: 500px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+        
+        /* Title Section */
+        .title-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .title-icon {
+            font-size: 4em;
+            color: #FF6B6B;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .title-section h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            color: #1A1A2E;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .title-section p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 450px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: #FF6B6B;
+            font-weight: 700;
+        }
+        
+        /* Form Styling */
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 3px solid #FF6B6B;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #FF6B6B, #FF8E53, #17C3B2);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #1A1A2E;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-label i {
+            color: #FF6B6B;
+            font-size: 1.2em;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #FF6B6B;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+        }
+        
+        .form-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF6B6B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 20px;
+            padding-right: 50px;
+        }
+        
+        .form-select option {
+            padding: 15px;
+            font-size: 16px;
+        }
+        
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
+            background: linear-gradient(135deg, #FF8E53, #FF6B6B);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        /* Note Box */
+        .note-box {
+            background: linear-gradient(135deg, #17C3B2, #129e8e);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.95em;
+            box-shadow: 0 5px 15px rgba(23, 195, 178, 0.2);
+        }
+        
+        .note-box i {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        
+        /* Footer */
+        .main-footer {
+            background: #1A1A2E;
+            color: white;
+            padding: 30px 5%;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-text {
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-link:hover {
+            background: rgba(255, 107, 107, 0.2);
+            color: #FF6B6B;
+            transform: translateY(-3px);
+        }
+        
+        /* Course Options Styling */
+        .course-option {
+            display: block;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .course-option:hover {
+            background: #fff;
+            border-color: #FF6B6B;
+            transform: translateX(5px);
+        }
+        
+        .course-option.selected {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 142, 83, 0.1));
+            border-color: #FF6B6B;
+        }
+        
+        .course-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .course-name {
+            font-weight: 600;
+            color: #1A1A2E;
+            margin-bottom: 5px;
+        }
+        
+        .course-price {
+            color: #FF6B6B;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        
+        .course-discount {
+            color: #17C3B2;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
             .main-header {
                 padding: 15px;
-                position: fixed;
-                top: 0;
-                width: 100%;
-                z-index: 1000;
             }
             
             .logo-text {
-                font-size: 1.2em;
-            }
-            
-            .register-page {
-                padding: 80px 15px 40px;
-                margin-top: 60px;
-            }
-            
-            .register-form-container {
-                padding: 25px 20px;
-                border-radius: 12px;
-                margin-top: 20px;
-            }
-            
-            .content-wrapper h2 {
-                font-size: 1.8em !important;
-                margin-bottom: 10px;
-            }
-            
-            .content-wrapper p {
-                font-size: 1em !important;
-                padding: 0 10px;
-            }
-            
-            .form-group input,
-            .form-group select {
-                padding: 14px;
-                font-size: 16px;
-            }
-            
-            .submit-btn {
-                padding: 16px;
-                font-size: 16px;
-            }
-            
-            .note {
-                font-size: 0.9em;
-                padding: 12px;
-            }
-            
-            .header-right {
-                display: none;
+                font-size: 1.3em;
             }
             
             .mobile-menu-btn {
                 display: block;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.5em;
-                cursor: pointer;
+            }
+            
+            .register-container {
+                margin: 80px auto 30px;
+                padding: 0 15px;
+            }
+            
+            .title-section h1 {
+                font-size: 2.2em;
+            }
+            
+            .title-section p {
+                font-size: 1em;
+                padding: 0 10px;
+            }
+            
+            .form-card {
+                padding: 30px 25px;
+            }
+            
+            .form-input {
+                padding: 16px;
+            }
+            
+            .submit-btn {
+                padding: 18px;
+                font-size: 1.2em;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .social-link {
+                width: 200px;
+                justify-content: center;
             }
         }
         
         @media (max-width: 480px) {
-            .content-wrapper h2 {
-                font-size: 1.6em !important;
+            .title-section h1 {
+                font-size: 1.8em;
             }
             
-            .register-form-container {
-                padding: 20px 15px;
+            .title-icon {
+                font-size: 3em;
             }
             
-            .form-group input,
-            .form-group select {
-                padding: 12px;
+            .form-card {
+                padding: 25px 20px;
+            }
+            
+            .form-label {
+                font-size: 1em;
             }
             
             .main-footer {
-                padding: 20px 15px;
-                font-size: 0.9em;
+                padding: 25px 15px;
             }
         }
         
-        /* Mobile menu button */
-        .mobile-menu-btn {
+        /* Loading Animation */
+        .loading {
             display: none;
+            text-align: center;
+            margin-top: 20px;
         }
         
-        .mobile-nav {
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #FF6B6B;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Success Message */
+        .success-message {
             display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            background: white;
-            z-index: 999;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
             padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            animation: slideIn 0.5s ease;
         }
         
-        .mobile-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .mobile-nav li {
-            margin: 15px 0;
-        }
-        
-        .mobile-nav a {
-            color: #333;
-            text-decoration: none;
-            font-size: 1.1em;
-            padding: 10px 15px;
-            display: block;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
-        
-        .mobile-nav a:hover {
-            background: #f8f9fa;
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Header -->
     <header class="main-header">
         <div class="logo">
-            <img src="logo.png" alt="Logo" class="logo-img">
+            <img src="logo.png" alt="Saidxonovnas School Logo" class="logo-img">
             <span class="logo-text">Saidxonovnas School</span>
         </div>
         
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-            <i class="fas fa-bars"></i>
+        <button class="mobile-menu-btn" onclick="window.location.href='index.html'">
+            <i class="fas fa-home"></i>
         </button>
-        
-        <div class="header-right">
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Bosh Sahifa</a></li>
-                </ul>
-            </nav>
-            <a href="index.html" class="action-btn desktop-only">Bosh Sahifa</a>
-        </div>
     </header>
 
-    <!-- Mobile Navigation -->
-    <div class="mobile-nav" id="mobileNav">
-        <nav>
-            <ul>
-                <li><a href="index.html">Bosh Sahifa</a></li>
-                <li><a href="index.html#courses">Kurslar</a></li>
-                <li><a href="index.html#about">Biz Haqimizda</a></li>
-                <li><a href="index.html#contact">Aloqa</a></li>
-                <li><a href="register.html" style="color: #FF6B6B; font-weight: bold;">Ro'yxatdan O'tish</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <section class="register-page">
-        <div class="content-wrapper" style="text-align: center;">
-            <h2 style="color: #FF6B6B; font-size: 2em; margin-bottom: 10px;">📝 RO'YXATDAN O'TISH</h2>
-            <p style="font-size: 1em; max-width: 600px; margin: 0 auto 20px; padding: 0 10px;">
-                Kursni tanlang, ma'lumotlaringizni kiriting va <span style="color: #FF6B6B; font-weight: bold;">50% chegirma</span> bilan ro'yxatdan o'ting!
+    <!-- Main Content -->
+    <main class="register-container">
+        <div class="title-section">
+            <div class="title-icon">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <h1>RO'YXATDAN O'TISH</h1>
+            <p>
+                Kursni tanlang, ma'lumotlaringizni kiriting va 
+                <span class="highlight">50% chegirma</span> bilan ro'yxatdan o'ting! 
+                Menejer siz bilan tez orada bog'lanadi.
             </p>
         </div>
-        
-        <div class="register-form-container">
+
+        <!-- Form Card -->
+        <div class="form-card">
             <form action="payment.html" method="GET" id="registerForm">
+                <!-- Name Field -->
                 <div class="form-group">
-                    <label for="name">Ismingiz</label>
-                    <input type="text" id="name" name="name" placeholder="To'liq ismingizni kiriting" required>
+                    <label for="name" class="form-label">
+                        <i class="fas fa-user"></i> Ismingiz
+                    </label>
+                    <input type="text" 
+                           id="name" 
+                           name="name" 
+                           class="form-input" 
+                           placeholder="To'liq ismingizni kiriting" 
+                           required
+                           autocomplete="name">
                 </div>
-                
+
+                <!-- Course Selection -->
                 <div class="form-group">
-                    <label for="course">Kursni tanlang</label>
-                    <select id="course" name="course" required>
+                    <label for="course" class="form-label">
+                        <i class="fas fa-book-open"></i> Kursni tanlang
+                    </label>
+                    <select id="course" 
+                            name="course" 
+                            class="form-input form-select" 
+                            required
+                            onchange="updateCourseDisplay()">
                         <option value="" disabled selected>--- Kursni tanlang ---</option>
-                        <option value="Xitoy Kursi">🇨🇳 Xitoy Kursi - 50,000 UZS (50% chegirma bilan)</option>
-                        <option value="Optom Kursi">📈 Optom Kursi - 125,000 UZS (50% chegirma bilan)</option>
+                        <option value="Xitoy Kursi" data-price="50000" data-icon="🇨🇳">
+                            Xitoydan Tovar Zakaz Qilish Kursi
+                        </option>
+                        <option value="Optom Kursi" data-price="125000" data-icon="📈">
+                            Optom Tavarlar Kursi
+                        </option>
                     </select>
+                    
+                    <!-- Course Details Display -->
+                    <div id="courseDetails" style="display: none; margin-top: 15px;">
+                        <div class="course-option" id="selectedCourseDisplay">
+                            <!-- Course details will be shown here -->
+                        </div>
+                    </div>
                 </div>
-                
+
+                <!-- Phone Field -->
                 <div class="form-group">
-                    <label for="phone">Telefon raqamingiz</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+998 (XX) XXX-XX-XX" required>
+                    <label for="phone" class="form-label">
+                        <i class="fas fa-phone"></i> Telefon raqamingiz
+                    </label>
+                    <input type="tel" 
+                           id="phone" 
+                           name="phone" 
+                           class="form-input" 
+                           placeholder="+998 (XX) XXX-XX-XX" 
+                           required
+                           autocomplete="tel">
                 </div>
-                
-                <button type="submit" class="submit-btn">
-                    ✅ RO'YXATDAN O'TISH VA TO'LOVGA O'TISH
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-check-circle"></i>
+                    RO'YXATDAN O'TISH VA TO'LOVGA O'TISH
                 </button>
+                
+                <!-- Loading Indicator -->
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 10px; color: #666;">Ma'lumotlaringiz yuborilmoqda...</p>
+                </div>
             </form>
-            
-            <div class="note">
+
+            <!-- Note Box -->
+            <div class="note-box">
+                <i class="fas fa-info-circle"></i>
                 Ro'yxatdan o'tgandan so'ng, sizni to'lov sahifasiga yo'naltiramiz
             </div>
         </div>
-    </section>
+    </main>
 
+    <!-- Footer -->
     <footer class="main-footer">
-        <p>&copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.</p>
-        <div class="social-links">
-            <a href="https://t.me/Saidxonovnas_School" target="_blank">Telegram</a>
-            <a href="https://instagram.com/Saidxonovnas_School" target="_blank">Instagram</a>
+        <div class="footer-content">
+            <p class="footer-text">
+                &copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.
+            </p>
+            <div class="social-links">
+                <a href="https://t.me/Saidxonovnas_School" target="_blank" class="social-link">
+                    <i class="fab fa-telegram"></i> Telegram
+                </a>
+                <a href="https://instagram.com/Saidxonovnas_School" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="tel:+998945165167" class="social-link">
+                    <i class="fas fa-phone"></i> +998 (94) 516-51-67
+                </a>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu functionality
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            const mobileNav = document.getElementById('mobileNav');
-            mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
-        });
-        
         // Telefon raqamini formatlash
         document.getElementById('phone').addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
@@ -257,14 +612,111 @@
             
             e.target.value = formatted;
         });
-        
-        // Close mobile nav when clicking outside
-        document.addEventListener('click', function(e) {
-            const mobileNav = document.getElementById('mobileNav');
-            const menuBtn = document.getElementById('mobileMenuBtn');
+
+        // Kurs tanlanganda ko'rsatish
+        function updateCourseDisplay() {
+            const courseSelect = document.getElementById('course');
+            const selectedOption = courseSelect.options[courseSelect.selectedIndex];
+            const courseDetails = document.getElementById('courseDetails');
+            const displayDiv = document.getElementById('selectedCourseDisplay');
             
-            if (!mobileNav.contains(e.target) && !menuBtn.contains(e.target)) {
-                mobileNav.style.display = 'none';
+            if (courseSelect.value) {
+                const icon = selectedOption.getAttribute('data-icon') || '📚';
+                const price = selectedOption.getAttribute('data-price') || '0';
+                const courseName = selectedOption.text;
+                
+                // Format price
+                const formattedPrice = new Intl.NumberFormat('uz-UZ').format(price) + ' UZS';
+                
+                displayDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <span style="font-size: 1.8em; margin-right: 10px;">${icon}</span>
+                        <div>
+                            <div class="course-name">${courseName}</div>
+                            <div>
+                                <span class="course-price">${formattedPrice}</span>
+                                <span class="course-discount"> (50% chegirma bilan)</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                courseDetails.style.display = 'block';
+            } else {
+                courseDetails.style.display = 'none';
+            }
+        }
+
+        // Form yuborish
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            
+            // Loading ko'rsatish
+            submitBtn.style.display = 'none';
+            loading.style.display = 'block';
+            
+            // Ma'lumotlarni tekshirish
+            const name = document.getElementById('name').value;
+            const course = document.getElementById('course').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!name || !course || !phone) {
+                alert('Iltimos, barcha maydonlarni to\'ldiring!');
+                submitBtn.style.display = 'flex';
+                loading.style.display = 'none';
+                e.preventDefault();
+                return;
+            }
+            
+            // Telefon raqamini to'g'rilash
+            const cleanPhone = phone.replace(/\D/g, '');
+            if (cleanPhone.length < 9) {
+                alert('Iltimos, to\'liq telefon raqamini kiriting!');
+                submitBtn.style.display = 'flex';
+                loading.style.display = 'none';
+                e.preventDefault();
+                return;
+            }
+            
+            // URL ga telefon raqamini to'g'ri formatda qo'shish
+            this.phone.value = '+998' + cleanPhone.slice(-9);
+            
+            // 1.5 soniya kutish (loading effekti uchun)
+            setTimeout(() => {
+                submitBtn.style.display = 'flex';
+                loading.style.display = 'none';
+            }, 1500);
+        });
+
+        // Sahifa yuklanganda kursni tekshirish
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCourseDisplay();
+            
+            // Input'larni tozalash
+            const inputs = document.querySelectorAll('.form-input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+            });
+        });
+
+        // Scroll animatsiyasi
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.main-header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
+                header.style.padding = '12px 5%';
+            } else {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                header.style.padding = '18px 5%';
             }
         });
     </script>
