@@ -1,77 +1,102 @@
 <!DOCTYPE html>
 <html lang="uz">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ro'yxatdan O'tish | Saidxonovnas School</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* ===== UNIVERSAL STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1e293b;
+            line-height: 1.6;
             min-height: 100vh;
-            color: #333;
         }
         
-        /* Header */
+        /* ===== HEADER ===== */
         .main-header {
-            background: #1A1A2E;
-            color: white;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             padding: 18px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .logo:hover {
+            transform: translateX(-3px);
         }
         
         .logo-img {
-            height: 45px;
+            height: 44px;
             width: auto;
-            border-radius: 8px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         
         .logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.6em;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.7em;
             font-weight: 700;
-            color: white;
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
         }
         
-        .mobile-menu-btn {
-            display: none;
-            background: none;
+        .back-btn {
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            color: white;
+            padding: 11px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95em;
             border: none;
-            color: white;
-            font-size: 1.8em;
             cursor: pointer;
-            padding: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
         }
         
-        /* Main Container */
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+        }
+        
+        /* ===== MAIN CONTENT ===== */
         .register-container {
-            max-width: 500px;
-            margin: 100px auto 50px;
+            max-width: 520px;
+            margin: 120px auto 50px;
             padding: 0 20px;
         }
         
@@ -83,49 +108,67 @@
         
         .title-icon {
             font-size: 4em;
-            color: #FF6B6B;
             margin-bottom: 20px;
-            animation: bounce 2s infinite;
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: float 3s ease-in-out infinite;
         }
         
-        @keyframes bounce {
+        @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
         
         .title-section h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8em;
-            color: #1A1A2E;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 2.5em;
+            color: #1e293b;
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            background-clip: text;
         }
         
         .title-section p {
-            font-size: 1.2em;
-            color: #555;
-            max-width: 450px;
+            font-size: 1.15em;
+            color: #64748b;
+            max-width: 500px;
             margin: 0 auto;
             line-height: 1.6;
         }
         
         .highlight {
-            color: #FF6B6B;
+            color: #ef4444;
             font-weight: 700;
         }
         
-        /* Form Styling */
+        /* Form Card */
         .form-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 3px solid #FF6B6B;
+            padding: 45px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08),
+                        0 1px 3px rgba(0, 0, 0, 0.04);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(239, 68, 68, 0.1);
+            animation: slideUp 0.6s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .form-card::before {
@@ -134,106 +177,189 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #FF6B6B, #FF8E53, #17C3B2);
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444, #f97316, #10b981);
         }
         
+        /* Form Elements */
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 28px;
             position: relative;
         }
         
         .form-label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-weight: 600;
-            color: #1A1A2E;
-            font-size: 1.1em;
+            color: #1e293b;
+            font-size: 1.05em;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
         .form-label i {
-            color: #FF6B6B;
+            color: #ef4444;
             font-size: 1.2em;
+            width: 24px;
         }
         
         .form-input {
             width: 100%;
-            padding: 18px 20px;
-            border: 2px solid #e0e0e0;
+            padding: 17px 20px;
+            border: 2px solid #e2e8f0;
             border-radius: 12px;
             font-size: 16px;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-            background: #f8f9fa;
+            font-family: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #f8fafc;
+            color: #1e293b;
         }
         
         .form-input:focus {
             outline: none;
-            border-color: #FF6B6B;
+            border-color: #ef4444;
             background: white;
-            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
         }
         
         .form-select {
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF6B6B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 20px center;
             background-size: 20px;
             padding-right: 50px;
+            cursor: pointer;
         }
         
-        .form-select option {
-            padding: 15px;
-            font-size: 16px;
+        /* Course Options */
+        .course-options {
+            display: grid;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .course-option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .course-option:hover {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.03);
+            transform: translateX(5px);
+        }
+        
+        .course-option.selected {
+            border-color: #ef4444;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(249, 115, 22, 0.05));
+        }
+        
+        .course-icon {
+            font-size: 1.8em;
+            min-width: 40px;
+        }
+        
+        .course-content {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .course-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+        
+        .course-price {
+            color: #ef4444;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        
+        .course-discount {
+            color: #10b981;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .course-discount::before {
+            content: '🔥';
         }
         
         /* Submit Button */
         .submit-btn {
             width: 100%;
             padding: 20px;
-            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
             color: white;
             border: none;
             border-radius: 12px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.3em;
+            font-size: 1.2em;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
             margin-top: 30px;
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
         }
         
         .submit-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
-            background: linear-gradient(135deg, #FF8E53, #FF6B6B);
+            box-shadow: 0 15px 35px rgba(239, 68, 68, 0.35);
         }
         
-        .submit-btn:active {
-            transform: translateY(-2px);
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
         }
         
         /* Note Box */
         .note-box {
-            background: linear-gradient(135deg, #17C3B2, #129e8e);
-            color: white;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+            color: #065f46;
             padding: 20px;
             border-radius: 12px;
             margin-top: 30px;
             text-align: center;
             font-size: 0.95em;
-            box-shadow: 0 5px 15px rgba(23, 195, 178, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.2);
         }
         
         .note-box i {
@@ -241,119 +367,97 @@
             font-size: 1.2em;
         }
         
-        /* Footer */
-        .main-footer {
-            background: #1A1A2E;
-            color: white;
-            padding: 30px 5%;
+        /* Loading Animation */
+        .loading {
+            display: none;
             text-align: center;
-            margin-top: 50px;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .footer-text {
-            margin-bottom: 20px;
-            font-size: 0.95em;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
             margin-top: 20px;
         }
         
-        .social-link {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
+        .spinner {
+            border: 3px solid #f1f5f9;
+            border-top: 3px solid #ef4444;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Success Animation */
+        .success-check {
+            display: none;
+            font-size: 3em;
+            color: #10b981;
+            animation: checkmark 0.5s ease;
+        }
+        
+        @keyframes checkmark {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        /* ===== FOOTER ===== */
+        .main-footer {
+            background: #1e293b;
+            color: #cbd5e1;
+            padding: 40px 5%;
+            text-align: center;
+            margin-top: 80px;
+            border-radius: 30px 30px 0 0;
+        }
+        
+        .footer-links {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 15px;
+            justify-content: center;
+            gap: 28px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 10px 22px;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .social-link:hover {
-            background: rgba(255, 107, 107, 0.2);
-            color: #FF6B6B;
-            transform: translateY(-3px);
-        }
-        
-        /* Course Options Styling */
-        .course-option {
-            display: block;
-            padding: 15px;
-            margin: 10px 0;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border: 2px solid #e0e0e0;
+            background: rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
         
-        .course-option:hover {
-            background: #fff;
-            border-color: #FF6B6B;
-            transform: translateX(5px);
+        .footer-link:hover {
+            background: rgba(239, 68, 68, 0.2);
+            color: white;
+            transform: translateY(-2px);
         }
         
-        .course-option.selected {
-            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 142, 83, 0.1));
-            border-color: #FF6B6B;
-        }
-        
-        .course-icon {
-            font-size: 1.5em;
-            margin-right: 10px;
-        }
-        
-        .course-name {
-            font-weight: 600;
-            color: #1A1A2E;
-            margin-bottom: 5px;
-        }
-        
-        .course-price {
-            color: #FF6B6B;
-            font-weight: 700;
-            font-size: 1.2em;
-        }
-        
-        .course-discount {
-            color: #17C3B2;
-            font-size: 0.9em;
-            font-weight: 600;
-        }
-        
-        /* Responsive Design */
+        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
             .main-header {
                 padding: 15px;
             }
             
             .logo-text {
-                font-size: 1.3em;
+                font-size: 1.4em;
             }
             
-            .mobile-menu-btn {
-                display: block;
+            .back-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
             }
             
             .register-container {
-                margin: 80px auto 30px;
+                margin: 100px auto 30px;
                 padding: 0 15px;
             }
             
             .title-section h1 {
-                font-size: 2.2em;
+                font-size: 2em;
             }
             
             .title-section p {
@@ -371,24 +475,31 @@
             
             .submit-btn {
                 padding: 18px;
-                font-size: 1.2em;
+                font-size: 1.1em;
             }
             
-            .social-links {
+            .course-option {
+                padding: 15px;
+            }
+            
+            .course-icon {
+                font-size: 1.5em;
+            }
+            
+            .footer-links {
                 flex-direction: column;
                 gap: 15px;
                 align-items: center;
             }
-            
-            .social-link {
-                width: 200px;
-                justify-content: center;
-            }
         }
         
         @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2em;
+            }
+            
             .title-section h1 {
-                font-size: 1.8em;
+                font-size: 1.7em;
             }
             
             .title-icon {
@@ -403,73 +514,89 @@
                 font-size: 1em;
             }
             
-            .main-footer {
-                padding: 25px 15px;
+            .course-option {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .course-content {
+                text-align: center;
             }
         }
         
-        /* Loading Animation */
-        .loading {
-            display: none;
-            text-align: center;
-            margin-top: 20px;
+        /* ===== VALIDATION STYLES ===== */
+        .error-message {
+            color: #ef4444;
+            font-size: 0.9em;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: shake 0.5s ease;
         }
         
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #FF6B6B;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .form-input.error {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.05);
         }
         
-        /* Success Message */
-        .success-message {
-            display: none;
-            background: linear-gradient(135deg, #4CAF50, #45a049);
+        .form-input.success {
+            border-color: #10b981;
+        }
+        
+        /* ===== CUSTOM CHECKBOX ===== */
+        .checkmark {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .course-option.selected .checkmark {
+            background: #ef4444;
+            border-color: #ef4444;
+        }
+        
+        .course-option.selected .checkmark::after {
+            content: '✓';
             color: white;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 20px;
-            animation: slideIn 0.5s ease;
-        }
-        
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            font-weight: bold;
         }
     </style>
 </head>
-
 <body>
     <!-- Header -->
     <header class="main-header">
-        <div class="logo">
-            <img src="logo.png" alt="Saidxonovnas School Logo" class="logo-img">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Saidxonovnas School" class="logo-img">
             <span class="logo-text">Saidxonovnas School</span>
-        </div>
+        </a>
         
-        <button class="mobile-menu-btn" onclick="window.location.href='index.html'">
-            <i class="fas fa-home"></i>
-        </button>
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Bosh Sahifa
+        </a>
     </header>
 
     <!-- Main Content -->
     <main class="register-container">
+        <!-- Title -->
         <div class="title-section">
             <div class="title-icon">
                 <i class="fas fa-user-graduate"></i>
@@ -484,7 +611,7 @@
 
         <!-- Form Card -->
         <div class="form-card">
-            <form action="payment.html" method="GET" id="registerForm">
+            <form id="registerForm">
                 <!-- Name Field -->
                 <div class="form-group">
                     <label for="name" class="form-label">
@@ -497,6 +624,9 @@
                            placeholder="To'liq ismingizni kiriting" 
                            required
                            autocomplete="name">
+                    <div class="error-message" id="nameError" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i> Iltimos, ismingizni kiriting
+                    </div>
                 </div>
 
                 <!-- Course Selection -->
@@ -504,28 +634,49 @@
                     <label for="course" class="form-label">
                         <i class="fas fa-book-open"></i> Kursni tanlang
                     </label>
-                    <select id="course" 
+                    
+                    <select id="courseSelect" 
                             name="course" 
                             class="form-input form-select" 
                             required
-                            onchange="updateCourseDisplay()">
+                            onchange="updateCourseSelection(this)">
                         <option value="" disabled selected>--- Kursni tanlang ---</option>
-                        <option value="Xitoy Kursi" data-price="50000" data-icon="🇨🇳">
+                        <option value="Xitoy Kursi" data-price="50000">
                             Xitoydan Tovar Zakaz Qilish Kursi
                         </option>
-                        <option value="Optom Kursi" data-price="125000" data-icon="📈">
+                        <option value="Optom Kursi" data-price="125000">
                             Optom Tavarlar Kursi
                         </option>
                     </select>
                     
-                    <!-- Course Details Display -->
-                    <div id="courseDetails" style="display: none; margin-top: 15px;">
-                        <div class="course-option" id="selectedCourseDisplay">
-                            <!-- Course details will be shown here -->
+                    <!-- Course Options Display -->
+                    <div class="course-options" id="courseOptions">
+                        <div class="course-option" onclick="selectCourse('Xitoy Kursi', 50000)">
+                            <div class="course-icon">🇨🇳</div>
+                            <div class="course-content">
+                                <div class="course-name">Xitoydan Tovar Zakaz Qilish Kursi</div>
+                                <div class="course-price">50,000 UZS</div>
+                                <div class="course-discount">50% chegirma bilan</div>
+                            </div>
+                            <div class="checkmark"></div>
+                        </div>
+                        
+                        <div class="course-option" onclick="selectCourse('Optom Kursi', 125000)">
+                            <div class="course-icon">📈</div>
+                            <div class="course-content">
+                                <div class="course-name">Optom Tavarlar Kursi</div>
+                                <div class="course-price">125,000 UZS</div>
+                                <div class="course-discount">50% chegirma bilan</div>
+                            </div>
+                            <div class="checkmark"></div>
                         </div>
                     </div>
+                    
+                    <div class="error-message" id="courseError" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i> Iltimos, kursni tanlang
+                    </div>
                 </div>
-
+                
                 <!-- Phone Field -->
                 <div class="form-group">
                     <label for="phone" class="form-label">
@@ -538,8 +689,15 @@
                            placeholder="+998 (XX) XXX-XX-XX" 
                            required
                            autocomplete="tel">
+                    <div class="error-message" id="phoneError" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i> Iltimos, to'g'ri telefon raqamini kiriting
+                    </div>
                 </div>
-
+                
+                <!-- Hidden fields for URL parameters -->
+                <input type="hidden" id="selectedCourse" name="selectedCourse" value="">
+                <input type="hidden" id="selectedPrice" name="price" value="">
+                
                 <!-- Submit Button -->
                 <button type="submit" class="submit-btn" id="submitBtn">
                     <i class="fas fa-check-circle"></i>
@@ -549,7 +707,12 @@
                 <!-- Loading Indicator -->
                 <div class="loading" id="loading">
                     <div class="spinner"></div>
-                    <p style="margin-top: 10px; color: #666;">Ma'lumotlaringiz yuborilmoqda...</p>
+                    <p style="margin-top: 10px; color: #64748b;">Ma'lumotlaringiz yuborilmoqda...</p>
+                </div>
+                
+                <!-- Success Check -->
+                <div class="success-check" id="successCheck">
+                    <i class="fas fa-check-circle"></i>
                 </div>
             </form>
 
@@ -563,26 +726,24 @@
 
     <!-- Footer -->
     <footer class="main-footer">
-        <div class="footer-content">
-            <p class="footer-text">
-                &copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.
-            </p>
-            <div class="social-links">
-                <a href="https://t.me/Saidxonovnas_School" target="_blank" class="social-link">
-                    <i class="fab fa-telegram"></i> Telegram
-                </a>
-                <a href="https://instagram.com/Saidxonovnas_School" target="_blank" class="social-link">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
-                <a href="tel:+998945165167" class="social-link">
-                    <i class="fas fa-phone"></i> +998 (94) 516-51-67
-                </a>
-            </div>
+        <p style="font-size: 1.1em; margin-bottom: 20px;">
+            &copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.
+        </p>
+        <div class="footer-links">
+            <a href="index.html" class="footer-link">Bosh Sahifa</a>
+            <a href="#contact" class="footer-link">Aloqa</a>
+            <a href="tel:+998945165167" class="footer-link">Qo'ng'iroq qilish</a>
         </div>
     </footer>
 
     <script>
-        // Telefon raqamini formatlash
+        // Selected course data
+        let selectedCourse = {
+            name: '',
+            price: '0'
+        };
+        
+        // Format phone number
         document.getElementById('phone').addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
             
@@ -612,112 +773,193 @@
             
             e.target.value = formatted;
         });
-
-        // Kurs tanlanganda ko'rsatish
-        function updateCourseDisplay() {
-            const courseSelect = document.getElementById('course');
-            const selectedOption = courseSelect.options[courseSelect.selectedIndex];
-            const courseDetails = document.getElementById('courseDetails');
-            const displayDiv = document.getElementById('selectedCourseDisplay');
+        
+        // Select course from options
+        function selectCourse(courseName, price) {
+            // Update selected course
+            selectedCourse = {
+                name: courseName,
+                price: price.toString()
+            };
             
-            if (courseSelect.value) {
-                const icon = selectedOption.getAttribute('data-icon') || '📚';
-                const price = selectedOption.getAttribute('data-price') || '0';
-                const courseName = selectedOption.text;
-                
-                // Format price
-                const formattedPrice = new Intl.NumberFormat('uz-UZ').format(price) + ' UZS';
-                
-                displayDiv.innerHTML = `
-                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                        <span style="font-size: 1.8em; margin-right: 10px;">${icon}</span>
-                        <div>
-                            <div class="course-name">${courseName}</div>
-                            <div>
-                                <span class="course-price">${formattedPrice}</span>
-                                <span class="course-discount"> (50% chegirma bilan)</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                courseDetails.style.display = 'block';
-            } else {
-                courseDetails.style.display = 'none';
+            // Update select element
+            document.getElementById('courseSelect').value = courseName;
+            
+            // Update hidden fields
+            document.getElementById('selectedCourse').value = courseName;
+            document.getElementById('selectedPrice').value = price;
+            
+            // Update UI
+            const options = document.querySelectorAll('.course-option');
+            options.forEach(option => {
+                option.classList.remove('selected');
+                const nameDiv = option.querySelector('.course-name');
+                if (nameDiv && nameDiv.textContent.includes(courseName)) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            // Clear error
+            document.getElementById('courseError').style.display = 'none';
+            document.getElementById('courseSelect').classList.remove('error');
+            
+            // Animate selection
+            const selectedOption = document.querySelector('.course-option.selected');
+            if (selectedOption) {
+                selectedOption.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    selectedOption.style.transform = 'scale(1)';
+                }, 150);
             }
         }
-
-        // Form yuborish
+        
+        // Update course selection from select element
+        function updateCourseSelection(select) {
+            const selectedOption = select.options[select.selectedIndex];
+            if (selectedOption.value) {
+                const price = selectedOption.getAttribute('data-price') || '0';
+                selectCourse(selectedOption.value, parseInt(price));
+            }
+        }
+        
+        // Validate form
+        function validateForm() {
+            let isValid = true;
+            
+            // Name validation
+            const name = document.getElementById('name').value.trim();
+            const nameError = document.getElementById('nameError');
+            const nameInput = document.getElementById('name');
+            
+            if (!name) {
+                nameError.style.display = 'flex';
+                nameInput.classList.add('error');
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+                nameInput.classList.remove('error');
+                nameInput.classList.add('success');
+            }
+            
+            // Course validation
+            const courseError = document.getElementById('courseError');
+            const courseSelect = document.getElementById('courseSelect');
+            
+            if (!selectedCourse.name) {
+                courseError.style.display = 'flex';
+                courseSelect.classList.add('error');
+                isValid = false;
+            } else {
+                courseError.style.display = 'none';
+                courseSelect.classList.remove('error');
+            }
+            
+            // Phone validation
+            const phone = document.getElementById('phone').value.replace(/\D/g, '');
+            const phoneError = document.getElementById('phoneError');
+            const phoneInput = document.getElementById('phone');
+            
+            if (!phone || phone.length < 9) {
+                phoneError.style.display = 'flex';
+                phoneInput.classList.add('error');
+                isValid = false;
+            } else {
+                phoneError.style.display = 'none';
+                phoneInput.classList.remove('error');
+                phoneInput.classList.add('success');
+            }
+            
+            return isValid;
+        }
+        
+        // Form submission
         document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            if (!validateForm()) {
+                // Shake form for error
+                this.style.animation = 'shake 0.5s ease';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 500);
+                return;
+            }
+            
+            // Show loading
             const submitBtn = document.getElementById('submitBtn');
             const loading = document.getElementById('loading');
             
-            // Loading ko'rsatish
             submitBtn.style.display = 'none';
             loading.style.display = 'block';
             
-            // Ma'lumotlarni tekshirish
-            const name = document.getElementById('name').value;
-            const course = document.getElementById('course').value;
-            const phone = document.getElementById('phone').value;
+            // Prepare data
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.replace(/\D/g, '');
+            const fullPhone = phone.length === 9 ? '+998' + phone : phone;
             
-            if (!name || !course || !phone) {
-                alert('Iltimos, barcha maydonlarni to\'ldiring!');
-                submitBtn.style.display = 'flex';
-                loading.style.display = 'none';
-                e.preventDefault();
-                return;
-            }
+            // Encode data for URL
+            const params = new URLSearchParams();
+            params.append('name', encodeURIComponent(name));
+            params.append('course', encodeURIComponent(selectedCourse.name));
+            params.append('price', selectedCourse.price);
+            params.append('phone', encodeURIComponent(fullPhone));
             
-            // Telefon raqamini to'g'rilash
-            const cleanPhone = phone.replace(/\D/g, '');
-            if (cleanPhone.length < 9) {
-                alert('Iltimos, to\'liq telefon raqamini kiriting!');
-                submitBtn.style.display = 'flex';
-                loading.style.display = 'none';
-                e.preventDefault();
-                return;
-            }
+            // Save to localStorage as backup
+            localStorage.setItem('regName', name);
+            localStorage.setItem('regCourse', selectedCourse.name);
+            localStorage.setItem('regPrice', selectedCourse.price + ' UZS');
+            localStorage.setItem('regPhone', fullPhone);
             
-            // URL ga telefon raqamini to'g'ri formatda qo'shish
-            this.phone.value = '+998' + cleanPhone.slice(-9);
-            
-            // 1.5 soniya kutish (loading effekti uchun)
+            // Simulate loading delay
             setTimeout(() => {
-                submitBtn.style.display = 'flex';
+                // Show success animation
                 loading.style.display = 'none';
+                const successCheck = document.getElementById('successCheck');
+                successCheck.style.display = 'block';
+                
+                // Redirect after animation
+                setTimeout(() => {
+                    window.location.href = 'payment.html?' + params.toString();
+                }, 1000);
             }, 1500);
         });
-
-        // Sahifa yuklanganda kursni tekshirish
+        
+        // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
-            updateCourseDisplay();
+            // Focus on name input
+            document.getElementById('name').focus();
             
-            // Input'larni tozalash
+            // Add input validation on blur
             const inputs = document.querySelectorAll('.form-input');
             inputs.forEach(input => {
-                input.addEventListener('focus', function() {
-                    this.parentElement.classList.add('focused');
-                });
-                
                 input.addEventListener('blur', function() {
-                    if (!this.value) {
-                        this.parentElement.classList.remove('focused');
+                    if (this.value.trim()) {
+                        this.classList.add('success');
                     }
                 });
             });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.main-header');
+                if (window.scrollY > 50) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.92)';
+                    header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
+                }
+            });
         });
-
-        // Scroll animatsiyasi
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.main-header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
-                header.style.padding = '12px 5%';
-            } else {
-                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-                header.style.padding = '18px 5%';
-            }
+        
+        // Prevent form submission on Enter in inputs
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && this.type !== 'submit') {
+                    e.preventDefault();
+                }
+            });
         });
     </script>
 </body>
