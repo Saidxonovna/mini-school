@@ -87,7 +87,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const phoneInput = document.getElementById('user-phone');
-            const registerForm = document.getElementById('register-form'); 
+            const registerForm = document.getElementById('register-form');
+            const submitBtn = document.getElementById('submit-reg-btn');
             
             // 1. Telefon raqamini formatlash
             phoneInput.addEventListener('input', function(e) {
@@ -128,14 +129,60 @@
                 e.target.value = formattedValue.trim();
             });
 
-            // 2. Forma yuborilganda to'g'ridan-to'g'ri payment.html ga yo'naltirish
-            registerForm.addEventListener('submit', function(e) {
-                e.preventDefault(); // Sahifa yangilanishini to'xtatish
+            // 2. Forma yuborish funksiyasi
+            function submitForm() {
+                // Forma maydonlarini tekshirish
+                const nameInput = document.getElementById('user-name');
+                const courseSelect = document.getElementById('user-course');
+                const phoneInput = document.getElementById('user-phone');
                 
-                // Formadagi maydonlar to'ldirilganini tekshirish
-                if (registerForm.checkValidity()) {
-                    window.location.href = "https://www.saidxonovna.uz/payment.html";
+                // Validation (tekshirish)
+                if (!nameInput.value.trim()) {
+                    alert('Iltimos, ismingizni kiriting!');
+                    nameInput.focus();
+                    return false;
                 }
+                
+                if (!courseSelect.value) {
+                    alert('Iltimos, kursni tanlang!');
+                    courseSelect.focus();
+                    return false;
+                }
+                
+                // Telefon raqamini tozalash va tekshirish
+                let phoneNumber = phoneInput.value.replace(/\D/g, '');
+                if (phoneNumber.length < 12 || !phoneNumber.startsWith('998')) {
+                    alert('Iltimos, to\'g\'ri telefon raqamini kiriting!');
+                    phoneInput.focus();
+                    return false;
+                }
+                
+                // Ma'lumotlarni localStorage'ga saqlash (keyin payment.html da ishlatish uchun)
+                const formData = {
+                    name: nameInput.value.trim(),
+                    course: courseSelect.value,
+                    coursePrice: courseSelect.options[courseSelect.selectedIndex].getAttribute('data-price'),
+                    phone: phoneNumber
+                };
+                
+                localStorage.setItem('registrationData', JSON.stringify(formData));
+                
+                // Payment sahifasiga yo'naltirish
+                window.location.href = "https://www.saidxonovna.uz/payment.html";
+                
+                return false;
+            }
+            
+            // 3. Forma submit hodisasi
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitForm();
+            });
+            
+            // 4. Button bosilganda ham ishlashi
+            submitBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                submitForm();
             });
 
         });
