@@ -930,4 +930,101 @@
             </div>
             
             <div class="footer-links">
-                <a href="index.html" class="footer-link
+                <a href="index.html" class="footer-link">Bosh Sahifa</a>
+                <a href="register.html" class="footer-link">Ro'yxatdan O'tish</a>
+                <a href="#courses" class="footer-link">Kurslar</a>
+                <a href="#contact" class="footer-link">Aloqa</a>
+            </div>
+            
+            <p class="copyright">
+                &copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.<br>
+                Website designed with ❤️ for our students
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        function closeMobileMenu() {
+            mobileNav.style.display = 'none';
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileNav.contains(e.target) && !menuToggle.contains(e.target)) {
+                mobileNav.style.display = 'none';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '#contact') return;
+                
+                e.preventDefault();
+                const targetId = href;
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    closeMobileMenu();
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.main-header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.92)';
+                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
+            }
+        });
+        
+        // Add loading state to buttons
+        document.querySelectorAll('.action-btn, .promo-btn, .details-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.href) {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<span class="loading"></span>';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                    }, 1500);
+                }
+            });
+        });
+        
+        // Add hover effect to cards on mouseenter
+        document.querySelectorAll('.course-card, .teacher-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Console greeting
+        console.log('%c🎓 Saidxonovnas School %c\nKreativlik va bilim doirasi!', 
+            'color: #ef4444; font-size: 18px; font-weight: bold;',
+            'color: #475569; font-size: 14px;');
+    </script>
+</body>
+</html>
