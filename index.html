@@ -7,25 +7,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* ===== UNIVERSAL STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1e293b;
             line-height: 1.6;
+            min-height: 100vh;
         }
         
-        /* ===== HEADER ===== */
+        /* ===== HEADER (Mac va Windows uchun) ===== */
         .main-header {
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 18px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -33,80 +38,120 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            border-bottom: 2px solid #FF6B6B;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: translateX(-3px);
         }
         
         .logo-img {
-            height: 45px;
+            height: 44px;
             width: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
         }
         
         .logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8em;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.7em;
             font-weight: 700;
-            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            background-clip: text;
+            letter-spacing: -0.5px;
         }
         
-        /* Navigation */
+        /* Navigation - Mac-styled */
         .main-nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 28px;
             align-items: center;
         }
         
         .main-nav a {
-            color: white;
+            color: #475569;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1em;
-            padding: 8px 15px;
+            font-size: 1.05em;
+            padding: 8px 16px;
             border-radius: 8px;
-            transition: all 0.3s ease;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            background: linear-gradient(90deg, #ef4444, #f97316);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
         
         .main-nav a:hover {
-            background: rgba(255, 107, 107, 0.2);
-            color: #FF6B6B;
-            transform: translateY(-2px);
+            color: #1e293b;
+            background: rgba(239, 68, 68, 0.05);
         }
         
+        .main-nav a:hover::after {
+            transform: scaleX(1);
+        }
+        
+        /* Action Button - Windows/Mac friendly */
         .action-btn {
-            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
             color: white;
-            padding: 12px 30px;
+            padding: 11px 28px;
             border-radius: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 1em;
+            font-weight: 600;
+            font-size: 0.95em;
             border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
         }
         
         .action-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
-            background: linear-gradient(135deg, #FF8E53, #FF6B6B);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+        }
+        
+        .action-btn:hover::before {
+            left: 100%;
         }
         
         /* ===== HERO SECTION ===== */
         .hero-section {
-            padding: 150px 5% 100px;
+            padding: 160px 5% 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -120,41 +165,47 @@
             right: 0;
             bottom: 0;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0V100H1000V0Z" fill="white"/></svg>');
-            background-size: 100% 100px;
+            background-size: 100% 120px;
             background-position: bottom;
             background-repeat: no-repeat;
             z-index: -1;
         }
         
-        .hero-section h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.5em;
-            color: #1A1A2E;
-            margin-bottom: 25px;
-            line-height: 1.2;
-            animation: fadeInUp 1s ease;
+        .hero-title {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 3.4em;
+            color: #1e293b;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .hero-section .subtitle {
-            font-size: 1.3em;
-            color: #666;
-            max-width: 800px;
+        .hero-subtitle {
+            font-size: 1.25em;
+            color: #64748b;
+            max-width: 780px;
             margin: 0 auto 50px;
-            animation: fadeInUp 1s ease 0.2s both;
+            font-weight: 400;
         }
         
-        /* Promo Box */
+        /* Promo Box - Glassmorphism */
         .promo-box {
-            background: white;
-            border: 3px solid #FF6B6B;
-            padding: 40px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
-            max-width: 800px;
+            padding: 45px;
+            max-width: 780px;
             margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.15);
-            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08),
+                        0 1px 3px rgba(0, 0, 0, 0.04);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(239, 68, 68, 0.1);
         }
         
         .promo-box::before {
@@ -163,14 +214,14 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #FF6B6B, #FF8E53, #17C3B2);
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444, #f97316, #10b981);
         }
         
-        .promo-box h2 {
-            color: #FF6B6B;
-            font-size: 2.2em;
-            margin-bottom: 15px;
+        .promo-title {
+            color: #ef4444;
+            font-size: 2.1em;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -178,39 +229,40 @@
         }
         
         .promo-fire {
-            font-size: 2em;
-            animation: fire 1s infinite;
+            font-size: 1.8em;
+            animation: pulse 2s infinite;
         }
         
-        @keyframes fire {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
         
-        .promo-box p {
-            font-size: 1.2em;
-            color: #555;
-            margin-bottom: 30px;
+        .promo-text {
+            font-size: 1.15em;
+            color: #475569;
+            margin-bottom: 32px;
+            line-height: 1.7;
         }
         
         .promo-btn {
-            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
             color: white;
-            padding: 18px 40px;
+            padding: 17px 42px;
             border-radius: 12px;
-            font-size: 1.2em;
-            font-weight: 700;
+            font-size: 1.15em;
+            font-weight: 600;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: inline-block;
             text-decoration: none;
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+            display: inline-block;
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.25);
         }
         
         .promo-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(239, 68, 68, 0.35);
         }
         
         /* ===== SECTIONS ===== */
@@ -219,58 +271,62 @@
             text-align: center;
         }
         
-        .section h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8em;
-            color: #1A1A2E;
-            margin-bottom: 20px;
+        .section-title {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 2.7em;
+            color: #1e293b;
+            margin-bottom: 24px;
             position: relative;
             display: inline-block;
         }
         
-        .section h2::after {
+        .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 70px;
             height: 4px;
-            background: linear-gradient(90deg, #FF6B6B, #FF8E53);
+            background: linear-gradient(90deg, #ef4444, #f97316);
             border-radius: 2px;
         }
         
-        .content-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
+        .section-subtitle {
+            font-size: 1.2em;
+            color: #64748b;
+            max-width: 900px;
+            margin: 0 auto 40px;
         }
         
-        /* Courses */
+        /* ===== COURSES ===== */
         .course-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
             margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .course-card {
             background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            max-width: 350px;
-            width: 100%;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border-radius: 18px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05),
+                        0 1px 3px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
         }
         
         .course-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            border-color: #FF6B6B;
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1),
+                        0 1px 3px rgba(0, 0, 0, 0.05);
+            border-color: rgba(239, 68, 68, 0.2);
         }
         
         .course-card::before {
@@ -279,103 +335,148 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #FF6B6B, #FF8E53);
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444, #f97316);
         }
         
         .course-card h3 {
-            color: #1A1A2E;
+            color: #1e293b;
             font-size: 1.4em;
-            margin-bottom: 15px;
-            min-height: 60px;
+            margin-bottom: 16px;
+            min-height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .course-card p {
-            color: #666;
-            margin-bottom: 10px;
+            color: #64748b;
+            margin-bottom: 12px;
             font-size: 0.95em;
+            line-height: 1.6;
         }
         
         .details-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #17C3B2, #129e8e);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
-            padding: 12px 30px;
+            padding: 12px 28px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95em;
             margin-top: 20px;
+            display: inline-block;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
         
         .details-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(23, 195, 178, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25);
         }
         
-        /* Teacher Card */
+        /* ===== TEACHER SECTION ===== */
         .teacher-card {
             background: white;
-            padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
+            padding: 45px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            max-width: 500px;
             margin: 40px auto;
-            border: 3px solid #17C3B2;
+            border: 1px solid rgba(239, 68, 68, 0.1);
+            position: relative;
         }
         
-        .teacher-card img {
+        .teacher-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444, #f97316);
+        }
+        
+        .teacher-img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 20px;
-            border: 5px solid #FF6B6B;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+            border: 4px solid #ef4444;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.15);
         }
         
-        /* Contact */
+        .teacher-name {
+            color: #1e293b;
+            font-size: 1.6em;
+            margin-bottom: 8px;
+        }
+        
+        .teacher-title {
+            color: #ef4444;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+        
+        /* ===== CONTACT SECTION ===== */
         .contact-section {
             background: white;
             border-radius: 30px 30px 0 0;
-            margin-top: 50px;
+            margin-top: 80px;
             padding: 80px 5%;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
         }
         
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 32px;
+            margin-top: 40px;
+            flex-wrap: wrap;
         }
         
-        .social-icons a {
-            font-size: 2.5em;
-            color: #1A1A2E;
-            transition: all 0.3s ease;
+        .social-icon {
             width: 70px;
             height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f8f9fa;
+            font-size: 1.8em;
+            color: #475569;
+            background: #f8fafc;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
         }
         
-        .social-icons a:hover {
-            transform: translateY(-5px);
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
             color: white;
         }
         
-        .social-icons a:nth-child(1):hover { background: #25D366; }
-        .social-icons a:nth-child(2):hover { background: #0088cc; }
-        .social-icons a:nth-child(3):hover { background: #E4405F; }
+        .social-icon.whatsapp:hover { background: #25D366; }
+        .social-icon.telegram:hover { background: #0088cc; }
+        .social-icon.instagram:hover { background: #E4405F; }
+        
+        .phone-number {
+            font-size: 1.4em;
+            color: #ef4444;
+            font-weight: 600;
+            margin: 25px 0;
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(239, 68, 68, 0.05);
+            border-radius: 12px;
+        }
         
         /* ===== FOOTER ===== */
         .main-footer {
-            background: #1A1A2E;
-            color: white;
+            background: #1e293b;
+            color: #cbd5e1;
             padding: 50px 5%;
             text-align: center;
         }
@@ -388,98 +489,179 @@
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
+            gap: 28px;
+            margin: 32px 0;
             flex-wrap: wrap;
         }
         
-        .footer-links a {
-            color: white;
+        .footer-link {
+            color: #cbd5e1;
             text-decoration: none;
-            font-size: 1.1em;
-            padding: 8px 20px;
+            padding: 10px 22px;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
+            font-size: 0.95em;
         }
         
-        .footer-links a:hover {
-            background: rgba(255, 107, 107, 0.3);
-            color: #FF6B6B;
-            transform: translateY(-3px);
+        .footer-link:hover {
+            background: rgba(239, 68, 68, 0.2);
+            color: white;
+            transform: translateY(-2px);
         }
         
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        .copyright {
+            color: #94a3b8;
+            font-size: 0.9em;
+            margin-top: 25px;
+        }
+        
+        /* ===== MOBILE MENU ===== */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #475569;
+            font-size: 1.6em;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 999;
+            padding: 25px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+        }
+        
+        .mobile-nav li {
+            margin: 16px 0;
+        }
+        
+        .mobile-nav a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 14px 20px;
+            display: block;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .mobile-nav a:hover {
+            background: rgba(239, 68, 68, 0.05);
+            border-left: 4px solid #ef4444;
+            color: #ef4444;
+            padding-left: 24px;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 2.8em;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .promo-title {
+                font-size: 1.8em;
+            }
+            
+            .section-title {
+                font-size: 2.3em;
             }
         }
         
-        /* ===== MOBILE RESPONSIVE ===== */
         @media (max-width: 768px) {
             .main-nav {
                 display: none;
             }
             
-            .menu-btn {
+            .menu-toggle {
                 display: block;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.8em;
-                cursor: pointer;
+            }
+            
+            .main-header {
+                padding: 15px 5%;
+            }
+            
+            .logo-text {
+                font-size: 1.4em;
             }
             
             .hero-section {
-                padding: 120px 5% 60px;
+                padding: 130px 5% 70px;
             }
             
-            .hero-section h1 {
+            .hero-title {
                 font-size: 2.2em;
-            }
-            
-            .hero-section .subtitle {
-                font-size: 1.1em;
                 padding: 0 10px;
             }
             
+            .hero-subtitle {
+                font-size: 1.1em;
+                padding: 0 15px;
+            }
+            
             .promo-box {
-                padding: 25px 20px;
+                padding: 30px 25px;
                 margin: 0 15px;
             }
             
-            .promo-box h2 {
-                font-size: 1.6em;
+            .promo-title {
+                font-size: 1.5em;
                 flex-direction: column;
                 gap: 10px;
             }
             
             .section {
-                padding: 60px 5%;
+                padding: 70px 5%;
             }
             
-            .section h2 {
+            .section-title {
                 font-size: 2em;
+            }
+            
+            .course-list {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                padding: 0 15px;
             }
             
             .course-card {
-                margin: 0 15px;
+                margin: 0;
+            }
+            
+            .teacher-card {
+                margin: 30px 15px;
+                padding: 35px 25px;
             }
             
             .social-icons {
-                gap: 20px;
+                gap: 25px;
             }
             
-            .social-icons a {
+            .social-icon {
                 width: 60px;
                 height: 60px;
-                font-size: 2em;
+                font-size: 1.6em;
             }
             
             .footer-links {
@@ -491,77 +673,104 @@
         
         @media (max-width: 480px) {
             .logo-text {
-                font-size: 1.4em;
+                font-size: 1.2em;
             }
             
-            .hero-section h1 {
-                font-size: 1.8em;
+            .hero-title {
+                font-size: 1.9em;
             }
             
             .promo-btn {
-                padding: 15px 25px;
+                padding: 15px 30px;
                 font-size: 1em;
                 width: 100%;
             }
             
-            .teacher-card {
-                padding: 25px 20px;
-                margin: 20px;
+            .action-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
             }
             
-            .teacher-card img {
-                width: 120px;
-                height: 120px;
+            .details-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .phone-number {
+                font-size: 1.2em;
+                padding: 10px 20px;
             }
         }
         
-        /* Mobile Menu */
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 80px;
-            left: 0;
-            width: 100%;
-            background: white;
-            z-index: 999;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            padding: 20px;
-            animation: slideDown 0.3s ease;
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        .mobile-nav ul {
-            list-style: none;
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease;
         }
         
-        .mobile-nav li {
-            margin: 15px 0;
+        .animate-slide-up {
+            animation: slideInUp 0.6s ease;
         }
         
-        .mobile-nav a {
-            color: #333;
-            text-decoration: none;
-            font-size: 1.2em;
-            padding: 12px 20px;
-            display: block;
-            border-radius: 10px;
-            border-left: 4px solid transparent;
-            transition: all 0.3s ease;
+        /* ===== SCROLLBAR STYLING ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
         }
         
-        .mobile-nav a:hover {
-            background: linear-gradient(90deg, rgba(255,107,107,0.1), rgba(23,195,178,0.1));
-            border-left: 4px solid #FF6B6B;
-            color: #FF6B6B;
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 5px;
         }
         
-        .mobile-nav .action-btn {
-            margin-top: 20px;
-            text-align: center;
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #dc2626, #ea580c);
+        }
+        
+        /* ===== SELECTION COLOR ===== */
+        ::selection {
+            background: rgba(239, 68, 68, 0.2);
+            color: #1e293b;
+        }
+        
+        /* ===== FOCUS STYLES ===== */
+        :focus {
+            outline: 2px solid rgba(239, 68, 68, 0.5);
+            outline-offset: 2px;
+        }
+        
+        /* ===== LOADING STATE ===== */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(239, 68, 68, 0.3);
+            border-radius: 50%;
+            border-top-color: #ef4444;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -573,7 +782,7 @@
             <span class="logo-text">Saidxonovnas School</span>
         </div>
         
-        <button class="menu-btn" id="menuBtn">
+        <button class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
         </button>
         
@@ -581,7 +790,7 @@
             <ul>
                 <li><a href="#home">Bosh Sahifa</a></li>
                 <li><a href="#courses">Kurslar</a></li>
-                <li><a href="#teachers">Mutaxassis</a></li>
+                <li><a href="#teacher">Mutaxassis</a></li>
                 <li><a href="#about">Biz Haqimizda</a></li>
                 <li><a href="#contact">Aloqa</a></li>
                 <li><a href="register.html" class="action-btn">Ro'yxatdan O'tish</a></li>
@@ -590,193 +799,135 @@
     </header>
 
     <!-- Mobile Navigation -->
-    <div class="mobile-nav" id="mobileNav">
+    <nav class="mobile-nav" id="mobileNav">
         <ul>
-            <li><a href="#home" onclick="closeMenu()">Bosh Sahifa</a></li>
-            <li><a href="#courses" onclick="closeMenu()">Kurslar</a></li>
-            <li><a href="#teachers" onclick="closeMenu()">Mutaxassis</a></li>
-            <li><a href="#about" onclick="closeMenu()">Biz Haqimizda</a></li>
-            <li><a href="#contact" onclick="closeMenu()">Aloqa</a></li>
-            <li><a href="register.html" class="action-btn" onclick="closeMenu()">Ro'yxatdan O'tish</a></li>
+            <li><a href="#home" onclick="closeMobileMenu()">Bosh Sahifa</a></li>
+            <li><a href="#courses" onclick="closeMobileMenu()">Kurslar</a></li>
+            <li><a href="#teacher" onclick="closeMobileMenu()">Mutaxassis</a></li>
+            <li><a href="#about" onclick="closeMobileMenu()">Biz Haqimizda</a></li>
+            <li><a href="#contact" onclick="closeMobileMenu()">Aloqa</a></li>
+            <li><a href="register.html" onclick="closeMobileMenu()" style="background: linear-gradient(135deg, #ef4444, #f97316); color: white; text-align: center;">Ro'yxatdan O'tish</a></li>
         </ul>
-    </div>
+    </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <h1>🚀 Kelajagingizni Hozirdan Qurishni Boshlang!</h1>
-        <p class="subtitle">Saidxonovnas School – bu shunchaki kurs emas, bu sizning professional va shaxsiy o'sish maydoningizdir.</p>
+        <h1 class="hero-title animate-fade-in">🚀 Kelajagingizni Hozirdan Qurishni Boshlang!</h1>
+        <p class="hero-subtitle animate-fade-in">Saidxonovnas School – bu shunchaki kurs emas, bu sizning professional va shaxsiy o'sish maydoningizdir.</p>
         
-        <div class="promo-box">
-            <h2><span class="promo-fire">🔥</span> SHOSHILING! MAXSUS AKSIYA!</h2>
-            <p>Faqat shu oyda ro'yxatdan o'ting va tanlangan kurslarga <strong>50% gacha chegirma</strong>ga ega bo'ling!</p>
+        <div class="promo-box animate-slide-up">
+            <h2 class="promo-title"><span class="promo-fire">🔥</span> SHOSHILING! MAXSUS AKSIYA!</h2>
+            <p class="promo-text">Faqat shu oyda ro'yxatdan o'ting va tanlangan kurslarga <strong>50% gacha chegirma</strong>ga ega bo'ling!</p>
             <a href="register.html" class="promo-btn">HOZIROQ RO'YXATDAN O'TING!</a>
         </div>
     </section>
 
     <!-- Courses Section -->
     <section id="courses" class="section">
-        <h2>🌟 Eng Mashhur Kurslar</h2>
-        <div class="content-wrapper">
-            <div class="course-list">
-                <div class="course-card">
-                    <h3>🇨🇳 XITOY KURSI: 10 KUNLIK TEZ START!</h3>
-                    <p>Faqat 10 kunda Xitoyning ikki yirik marketpleysidan zakaz berishni o'rganing!</p>
-                    <h4>Siz nimalarni o'rganasiz?</h4>
-                    <p>📦 KARGO: Tez va arzon yetkazib berish yo'llari.</p>
-                    <p>🛍️ PINDUODUO & TAOBAO: Tovar topish, sotib olish va buyurtma berish.</p>
-                    <a href="register.html" class="details-btn">Ro'yxatdan O'tish</a>
-                </div>
-                
-                <div class="course-card">
-                    <h3>📈 OPTOM KANALLAR KURSI</h3>
-                    <p>Eng yirik optom yetkazib beruvchilar va ulgurji savdo kanallariga chiqishni o'rganing!</p>
-                    <h4>Kursda nimalar bor?</h4>
-                    <p>🚛 Optom Kargo: Samarali logistika tizimlari.</p>
-                    <p>🌐 Maxfiy Optom Platformalar: Arzon manbalar.</p>
-                    <a href="register.html" class="details-btn">Ro'yxatdan O'tish</a>
-                </div>
-                
-                <div class="course-card">
-                    <h3>TEZ KUNDA KELADI</h3>
-                    <p>WECHAT, 1688, ALIPAY</p>
-                    <p>Bozorning eng chuqur sirlarini bilib oling.</p>
-                    <a href="register.html" class="details-btn">Ro'yxatdan O'tish</a>
-                </div>
+        <h2 class="section-title">🌟 Eng Mashhur Kurslar</h2>
+        <p class="section-subtitle">Professional bilimlar olish uchun eng yaxshi kurslar</p>
+        
+        <div class="course-list">
+            <div class="course-card animate-slide-up">
+                <h3>🇨🇳 XITOY KURSI: 10 KUNLIK TEZ START!</h3>
+                <p>Faqat 10 kunda Xitoyning ikki yirik marketpleysidan zakaz berishni o'rganing!</p>
+                <p><strong>📦 KARGO:</strong> Tez va arzon yetkazib berish yo'llari.</p>
+                <p><strong>🛍️ PINDUODUO & TAOBAO:</strong> Tovar topish va buyurtma berish.</p>
+                <a href="register.html" class="details-btn">Ro'yxatdan O'tish</a>
             </div>
+            
+            <div class="course-card animate-slide-up" style="animation-delay: 0.1s">
+                <h3>📈 OPTOM KANALLAR KURSI</h3>
+                <p>Eng yirik optom yetkazib beruvchilar va ulgurji savdo kanallariga chiqishni o'rganing!</p>
+                <p><strong>🚛 Optom Kargo:</strong> Samarali logistika tizimlari.</p>
+                <p><strong>🌐 Maxfiy Platformalar:</strong> Arzon manbalar.</p>
+                <a href="register.html" class="details-btn">Ro'yxatdan O'tish</a>
+            </div>
+            
+            <div class="course-card animate-slide-up" style="animation-delay: 0.2s">
+                <h3>TEZ KUNDA KELADI</h3>
+                <p>WECHAT, 1688, ALIPAY</p>
+                <p>Bozorning eng chuqur sirlarini bilib oling.</p>
+                <p><strong>⏳ Tez kunda yangi kurslar!</strong></p>
+                <a href="#contact" class="details-btn">Kutish Ro'yxati</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teacher Section -->
+    <section id="teacher" class="section">
+        <h2 class="section-title">👩‍🏫 Bizning Mutaxassisimiz</h2>
+        <p class="section-subtitle">Sizni tajribali mutaxassislar shaxsan o'qitishadi</p>
+        
+        <div class="teacher-card animate-slide-up">
+            <img src="teacher_muslima.jpg" alt="Bositkhonova Muslima" class="teacher-img">
+            <h3 class="teacher-name">Bositkhonova Muslima</h3>
+            <p class="teacher-title">Saidxonovnas School Asoschisi & Amaliy Ekspert</p>
+            <p style="text-align: left; color: #475569; line-height: 1.7;">
+                🚀 Maktabimiz asoschisi, Xitoy bilan savdo jarayonlarining amaliy eksperti.<br><br>
+                📈 Shaxsan Xitoydan tovar olib kelish va uni muvaffaqiyatli sotishning barcha sirlarini o'rgatadi.<br><br>
+                🤝 2022-yildan beri 1000+ dan ortiq insonlarga yordam bergan.
+            </p>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section">
-        <h2>🎓 Biz Haqimizda</h2>
-        <div class="content-wrapper">
-            <p style="font-size: 1.2em; max-width: 900px; margin: 0 auto 30px;">
+        <h2 class="section-title">🎓 Biz Haqimizda</h2>
+        <div class="content-wrapper" style="max-width: 900px; margin: 0 auto;">
+            <p style="font-size: 1.2em; color: #475569; margin-bottom: 25px; line-height: 1.7;">
                 "Saidxonovnas School" o'z faoliyatini 2023 yilda boshlagan bo'lib, sifatli ta'lim orqali yoshlarning kelajagini qurishni maqsad qilgan.
             </p>
-            <p style="max-width: 900px; margin: 0 auto;">
-                Bizning Xitoy bilan savdo tajribamiz 2022-yil sentabrdan boshlanadi. Shundan beri 1000+ dan ortiq insonlarga Xitoydan tovar zakaz qilishda yordam berganmiz.
-                Bu tajriba asosida, 2024-yilda professional onlayn kurs yaratdik. Hozirda 100+ dan ortiq shogirdimiz muvaffaqiyatli o'qimoqdalar.
-            </p>
-        </div>
-    </section>
-
-    <!-- Teachers Section -->
-    <section id="teachers" class="section">
-        <h2>👩‍🏫 Bizning Mutaxassisimiz</h2>
-        <div class="content-wrapper">
-            <p class="subtitle" style="font-size: 1.2em; margin-bottom: 40px;">
-                Sizni onlayn maktab asoschisi, "Bositkhonova Muslima" shaxsan o'qitishadi.
-            </p>
-            
-            <div class="teacher-card">
-                <img src="teacher_muslima.jpg" alt="Bositkhonova Muslima">
-                <h3>Bositkhonova Muslima</h3>
-                <p style="color: #FF6B6B; font-weight: 600; margin-bottom: 15px;">Saidxonovnas School Asoschisi & Amaliy Ekspert</p>
-                <p style="text-align: left;">
-                    🚀 Maktabimiz asoschisi, Xitoy bilan savdo jarayonlarining amaliy eksperti.<br><br>
-                    📈 Shaxsan Xitoydan tovar olib kelish va uni muvaffaqiyatli sotishning barcha sirlarini o'rgatadi.<br><br>
-                    🤝 2022-yildan beri 1000+ dan ortiq insonlarga yordam bergan.
-                </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                    <h3 style="color: #ef4444; margin-bottom: 15px;">📅 Tajriba</h3>
+                    <p>2022-yil sentabrdan boshlab Xitoy bilan savdo qilamiz</p>
+                </div>
+                <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                    <h3 style="color: #ef4444; margin-bottom: 15px;">👥 Yordam</h3>
+                    <p>1000+ dan ortiq insonlarga yordam berganmiz</p>
+                </div>
+                <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                    <h3 style="color: #ef4444; margin-bottom: 15px;">🎯 Natija</h3>
+                    <p>100+ dan ortiq shogird muvaffaqiyatli o'qimoqda</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-        <h2>📞 Aloqa</h2>
-        <div class="content-wrapper">
-            <p style="font-size: 1.3em; margin-bottom: 20px;">Savol va takliflar uchun biz bilan bog'laning:</p>
-            <p style="font-size: 1.4em; font-weight: 600; margin-bottom: 40px; color: #FF6B6B;">
-                <i class="fas fa-phone"></i> +998 (94) 516-51-67
-            </p>
-            
-            <div class="social-icons">
-                <a href="https://wa.me/998945165167" target="_blank" aria-label="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://t.me/Saidxonovnas_School" target="_blank" aria-label="Telegram">
-                    <i class="fab fa-telegram-plane"></i>
-                </a>
-                <a href="https://instagram.com/Saidxonovnas_School" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
+        <h2 class="section-title">📞 Aloqa</h2>
+        <p class="section-subtitle">Savol va takliflar uchun biz bilan bog'laning</p>
+        
+        <div class="phone-number">
+            <i class="fas fa-phone"></i> +998 (94) 516-51-67
         </div>
+        
+        <div class="social-icons">
+            <a href="https://wa.me/998945165167" target="_blank" class="social-icon whatsapp" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://t.me/Saidxonovnas_School" target="_blank" class="social-icon telegram" aria-label="Telegram">
+                <i class="fab fa-telegram-plane"></i>
+            </a>
+            <a href="https://instagram.com/Saidxonovnas_School" target="_blank" class="social-icon instagram" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        
+        <p style="margin-top: 40px; color: #64748b; font-size: 1.1em;">
+            Ish vaqti: 9:00 - 18:00<br>
+            Dushanba - Shanba
+        </p>
     </section>
 
     <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-content">
-            <p style="font-size: 1.1em; margin-bottom: 20px;">
-                &copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.
-            </p>
+            <div style="font-size: 1.1em; color: white; margin-bottom: 20px;">
+                <strong>Saidxonovnas School</strong> - Kelajagingiz uchun yaxshi investitsiya
+            </div>
             
             <div class="footer-links">
-                <a href="index.html">Bosh Sahifa</a>
-                <a href="register.html">Ro'yxatdan O'tish</a>
-                <a href="#courses">Kurslar</a>
-                <a href="#contact">Aloqa</a>
-            </div>
-            
-            <div style="margin-top: 30px;">
-                <p style="opacity: 0.8; font-size: 0.9em;">
-                    Kelajagingizni biz bilan quring! 🚀
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        document.getElementById('menuBtn').addEventListener('click', function() {
-            const mobileNav = document.getElementById('mobileNav');
-            mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
-        });
-        
-        function closeMenu() {
-            document.getElementById('mobileNav').style.display = 'none';
-        }
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const mobileNav = document.getElementById('mobileNav');
-            const menuBtn = document.getElementById('menuBtn');
-            
-            if (!mobileNav.contains(e.target) && !menuBtn.contains(e.target)) {
-                mobileNav.style.display = 'none';
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#') return;
-                
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    closeMenu();
-                }
-            });
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.main-header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(26, 26, 46, 0.98)';
-                header.style.padding = '15px 5%';
-            } else {
-                header.style.background = 'rgba(26, 26, 46, 0.95)';
-                header.style.padding = '20px 5%';
-            }
-        });
-    </script>
-</body>
-</html>
+                <a href="index.html" class="footer-link
