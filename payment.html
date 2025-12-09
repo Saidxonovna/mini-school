@@ -11,189 +11,162 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        .payment-container {
-            min-height: calc(100vh - 120px);
-            padding: 50px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .payment-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            max-width: 700px;
-            width: 100%;
-            margin-top: 30px;
-            border: 3px solid #FF6B6B;
-        }
-        
-        .user-info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        
-        .info-box {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 5px solid #17C3B2;
-        }
-        
-        .info-label {
-            font-size: 0.9em;
-            color: #666;
-            margin-bottom: 8px;
-        }
-        
-        .info-value {
-            font-size: 1.3em;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .price-box {
-            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            margin: 30px 0;
-        }
-        
-        .price-box h3 {
-            margin-bottom: 15px;
-            font-size: 1.8em;
-        }
-        
-        .price-amount {
-            font-size: 3em;
-            font-weight: bold;
-        }
-        
-        .instructions {
-            background: #fff9e6;
-            border: 2px dashed #FFD700;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
-        }
-        
-        .card-display {
-            text-align: center;
-            margin: 25px 0;
-        }
-        
-        .card-number {
-            font-family: 'Courier New', monospace;
-            font-size: 2em;
-            font-weight: bold;
-            color: #333;
-            background: #f0f0f0;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            letter-spacing: 3px;
-        }
-        
-        .warning-box {
-            background: #ffe6e6;
-            color: #d63031;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 25px 0;
-            border-left: 5px solid #d63031;
-        }
-        
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin: 40px 0 20px;
-        }
-        
-        .action-btn-large {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 1.2em;
-            font-weight: 600;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .telegram-action {
-            background: linear-gradient(135deg, #0088cc, #006699);
-            color: white;
-        }
-        
-        .telegram-action:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 136, 204, 0.3);
-        }
-        
-        .edit-action {
-            background: #f8f9fa;
-            color: #666;
-            border: 2px solid #ddd;
-        }
-        
-        .edit-action:hover {
-            background: #e9ecef;
-            transform: translateY(-3px);
-        }
-        
-        .contact-help {
-            text-align: center;
-            margin-top: 50px;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            max-width: 700px;
-            width: 100%;
-        }
-        
-        .no-data {
-            text-align: center;
-            padding: 50px;
-            background: #fff3cd;
-            border-radius: 15px;
-            margin: 50px 0;
-        }
-        
-        .no-data-btn {
-            display: inline-block;
-            background: #FF6B6B;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        
+        /* Mobile styles */
         @media (max-width: 768px) {
-            .payment-card {
-                padding: 25px;
+            .main-header {
+                padding: 15px;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
             }
             
-            .card-number {
+            .payment-container {
+                padding: 80px 15px 40px;
+                margin-top: 60px;
+            }
+            
+            .payment-container h2 {
+                font-size: 1.8em !important;
+                margin-bottom: 10px;
+            }
+            
+            .payment-container > div:first-child p {
+                font-size: 1em !important;
+                padding: 0 10px;
+            }
+            
+            .payment-card {
+                padding: 25px 20px;
+                border-radius: 15px;
+                margin-top: 20px;
+            }
+            
+            .user-info-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .info-box {
+                padding: 18px;
+            }
+            
+            .price-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+            
+            .price-box h3 {
                 font-size: 1.5em;
-                padding: 15px;
             }
             
             .price-amount {
                 font-size: 2.5em;
             }
+            
+            .instructions {
+                padding: 25px 20px;
+                margin: 30px 0;
+            }
+            
+            .card-number {
+                font-size: 1.6em;
+                padding: 18px;
+                letter-spacing: 2px;
+            }
+            
+            .action-btn-large {
+                padding: 18px;
+                font-size: 1.1em;
+            }
+            
+            .contact-help {
+                padding: 25px 20px;
+                margin-top: 40px;
+            }
+            
+            .no-data {
+                padding: 40px 20px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5em;
+                cursor: pointer;
+            }
+            
+            .header-right {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .payment-container h2 {
+                font-size: 1.6em !important;
+            }
+            
+            .card-number {
+                font-size: 1.4em;
+                padding: 15px;
+                letter-spacing: 1px;
+            }
+            
+            .price-amount {
+                font-size: 2em;
+            }
+            
+            .action-btn-large {
+                padding: 16px;
+                font-size: 1em;
+            }
+            
+            .contact-help h4 {
+                font-size: 1.2em;
+            }
+        }
+        
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .mobile-nav li {
+            margin: 15px 0;
+        }
+        
+        .mobile-nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        
+        .mobile-nav a:hover {
+            background: #f8f9fa;
         }
     </style>
 </head>
@@ -205,6 +178,10 @@
             <span class="logo-text">Saidxonovnas School</span>
         </div>
         
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
         <div class="header-right">
             <nav class="main-nav">
                 <ul>
@@ -215,12 +192,24 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <nav>
+            <ul>
+                <li><a href="index.html">Bosh Sahifa</a></li>
+                <li><a href="register.html">Ro'yxatdan O'tish</a></li>
+                <li><a href="index.html#courses">Kurslar</a></li>
+                <li><a href="index.html#contact">Aloqa</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <div class="payment-container">
-        <div style="text-align: center; max-width: 800px; margin-bottom: 30px;">
-            <h2 style="font-size: 2.8em; color: #333; margin-bottom: 15px;">
+        <div style="text-align: center; max-width: 800px; margin-bottom: 20px;">
+            <h2 style="font-size: 2.2em; color: #333; margin-bottom: 10px;">
                 <i class="fas fa-credit-card"></i> To'lovni Tasdiqlash
             </h2>
-            <p style="font-size: 1.2em; color: #666;">
+            <p style="font-size: 1.1em; color: #666; padding: 0 10px;">
                 Kursga ro'yxatdan o'tganingiz uchun rahmat! Quyidagi ma'lumotlarni tekshiring va to'lovni amalga oshiring.
             </p>
         </div>
@@ -231,14 +220,14 @@
             </div>
             
             <div class="instructions">
-                <h3 style="color: #FF6B6B; margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
+                <h3 style="color: #FF6B6B; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-size: 1.3em;">
                     <i class="fas fa-money-bill-wave"></i> Pul O'tkazish Yo'riqnomasi
                 </h3>
                 
                 <div class="card-display">
-                    <p style="font-weight: 600; margin-bottom: 15px; font-size: 1.1em;">UZCARD / HUMO karta raqami:</p>
+                    <p style="font-weight: 600; margin-bottom: 15px; font-size: 1em;">UZCARD / HUMO karta raqami:</p>
                     <div class="card-number">8600 6827 1256 6100</div>
-                    <p style="margin-top: 15px; font-size: 1.1em;">
+                    <p style="margin-top: 15px; font-size: 1em;">
                         <strong>Qabul qiluvchi:</strong> Bositxonova Muslimaxon
                     </p>
                 </div>
@@ -248,11 +237,11 @@
                     <strong> MUHIM:</strong> To'lovni amalga oshirgandan so'ng, chekni Telegram orqali yuborishingiz kerak!
                 </div>
                 
-                <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; margin-top: 25px;">
-                    <h4 style="color: #2E7D32; margin-bottom: 15px;">
+                <div style="background: #e8f5e9; padding: 18px; border-radius: 10px; margin-top: 20px;">
+                    <h4 style="color: #2E7D32; margin-bottom: 12px; font-size: 1.1em;">
                         <i class="fas fa-lightbulb"></i> To'lov qadamalari:
                     </h4>
-                    <ol style="text-align: left; padding-left: 20px; margin: 0;">
+                    <ol style="text-align: left; padding-left: 20px; margin: 0; font-size: 0.95em;">
                         <li>Yuqoridagi karta raqamiga summani o'tkazing</li>
                         <li>To'lov muvaffaqiyatli amalga oshganini tekshiring</li>
                         <li>Chekni skaner qiling yoki rasmga oling</li>
@@ -275,115 +264,10 @@
         </div>
         
         <div class="contact-help">
-            <h4 style="color: #17C3B2; margin-bottom: 20px;">
+            <h4 style="color: #17C3B2; margin-bottom: 15px; font-size: 1.2em;">
                 <i class="fas fa-headset"></i> Qo'shimcha Yordam Kerakmi?
             </h4>
-            <p style="margin-bottom: 20px;">Har qanday savol yoki muammo bo'lsa, biz bilan bog'laning:</p>
-            <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+            <p style="margin-bottom: 15px; font-size: 0.95em;">Har qanday savol yoki muammo bo'lsa, biz bilan bog'laning:</p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
                 <a href="https://t.me/Saidxonovnas_School" target="_blank" 
-                   style="color: #0088cc; text-decoration: none; font-weight: 600;">
-                    <i class="fab fa-telegram"></i> Telegram
-                </a>
-                <a href="tel:+998945165167" 
-                   style="color: #17C3B2; text-decoration: none; font-weight: 600;">
-                    <i class="fas fa-phone"></i> +998 (94) 516-51-67
-                </a>
-                <a href="https://wa.me/998945165167" target="_blank" 
-                   style="color: #25D366; text-decoration: none; font-weight: 600;">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <footer class="main-footer">
-        <p>&copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.</p>
-        <div class="social-links">
-            <a href="https://t.me/Saidxonovnas_School" target="_blank">Telegram</a>
-            <a href="https://instagram.com/Saidxonovnas_School" target="_blank">Instagram</a>
-        </div>
-    </footer>
-
-    <script>
-        // URL parametrlarini o'qish funksiyasi
-        function getUrlParams() {
-            const params = {};
-            const query = window.location.search.substring(1);
-            const pairs = query.split('&');
-            
-            for (let pair of pairs) {
-                const [key, value] = pair.split('=');
-                if (key && value) {
-                    params[decodeURIComponent(key)] = decodeURIComponent(value);
-                }
-            }
-            return params;
-        }
-        
-        // Narxni aniqlash
-        function getCoursePrice(course) {
-            if (course === 'Xitoy Kursi') return '50,000 UZS';
-            if (course === 'Optom Kursi') return '125,000 UZS';
-            return '0 UZS';
-        }
-        
-        // Sahifa yuklanganda
-        document.addEventListener('DOMContentLoaded', function() {
-            const params = getUrlParams();
-            const displayDiv = document.getElementById('userDataDisplay');
-            
-            if (params.name && params.course) {
-                const price = getCoursePrice(params.course);
-                
-                // User ma'lumotlarini ko'rsatish
-                displayDiv.innerHTML = `
-                    <div class="user-info-grid">
-                        <div class="info-box">
-                            <div class="info-label">Ism Familiya</div>
-                            <div class="info-value">${params.name}</div>
-                        </div>
-                        
-                        <div class="info-box">
-                            <div class="info-label">Tanlangan Kurs</div>
-                            <div class="info-value">${params.course}</div>
-                        </div>
-                        
-                        <div class="info-box">
-                            <div class="info-label">Telefon Raqam</div>
-                            <div class="info-value">${params.phone || 'Kiritilmagan'}</div>
-                        </div>
-                    </div>
-                    
-                    <div class="price-box">
-                        <h3>To'lanadigan Summa</h3>
-                        <div class="price-amount">${price}</div>
-                        <p style="margin-top: 10px; opacity: 0.9;">(50% chegirma bilan)</p>
-                    </div>
-                `;
-                
-                // localStorage ga ham saqlash (agar keyin kerak bo'lsa)
-                localStorage.setItem('regName', params.name);
-                localStorage.setItem('regCourse', params.course);
-                localStorage.setItem('regPhone', params.phone || '');
-                localStorage.setItem('regPrice', price);
-                
-            } else {
-                // Agar ma'lumotlar yo'q bo'lsa
-                displayDiv.innerHTML = `
-                    <div class="no-data">
-                        <h3 style="color: #d63031; margin-bottom: 20px;">
-                            <i class="fas fa-exclamation-circle"></i> Ma'lumotlar Topilmadi
-                        </h3>
-                        <p style="margin-bottom: 25px; font-size: 1.1em;">
-                            Iltimos, avval ro'yxatdan o'ting yoki sahifani qaytadan yuklang.
-                        </p>
-                        <a href="register.html" class="no-data-btn">
-                            RO'YXATDAN O'TISH SAHIFASIGA O'TISH
-                        </a>
-                    </div>
-                `;
-            }
-        });
-    </script>
-</body>
-</html>
+                   style="color: #0088cc; text-decoration: none; font-weight: 600; font-size: 0.9em
