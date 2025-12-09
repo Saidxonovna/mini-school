@@ -10,86 +10,130 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        .register-page {
-            min-height: calc(100vh - 120px);
-            padding: 80px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .register-form-container {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 500px;
-            width: 100%;
-            margin-top: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: #FF6B6B;
-            outline: none;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
-            color: white;
-            border: none;
-            padding: 18px;
-            width: 100%;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s;
-            margin-top: 20px;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-3px);
-        }
-        
-        .note {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            text-align: center;
-            color: #666;
-        }
-        
+        /* Mobile styles */
         @media (max-width: 768px) {
-            .register-form-container {
-                padding: 25px;
+            .main-header {
+                padding: 15px;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+            
+            .logo-text {
+                font-size: 1.2em;
             }
             
             .register-page {
-                padding: 60px 15px;
+                padding: 80px 15px 40px;
+                margin-top: 60px;
             }
+            
+            .register-form-container {
+                padding: 25px 20px;
+                border-radius: 12px;
+                margin-top: 20px;
+            }
+            
+            .content-wrapper h2 {
+                font-size: 1.8em !important;
+                margin-bottom: 10px;
+            }
+            
+            .content-wrapper p {
+                font-size: 1em !important;
+                padding: 0 10px;
+            }
+            
+            .form-group input,
+            .form-group select {
+                padding: 14px;
+                font-size: 16px;
+            }
+            
+            .submit-btn {
+                padding: 16px;
+                font-size: 16px;
+            }
+            
+            .note {
+                font-size: 0.9em;
+                padding: 12px;
+            }
+            
+            .header-right {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5em;
+                cursor: pointer;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content-wrapper h2 {
+                font-size: 1.6em !important;
+            }
+            
+            .register-form-container {
+                padding: 20px 15px;
+            }
+            
+            .form-group input,
+            .form-group select {
+                padding: 12px;
+            }
+            
+            .main-footer {
+                padding: 20px 15px;
+                font-size: 0.9em;
+            }
+        }
+        
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .mobile-nav li {
+            margin: 15px 0;
+        }
+        
+        .mobile-nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        
+        .mobile-nav a:hover {
+            background: #f8f9fa;
         }
     </style>
 </head>
@@ -101,6 +145,10 @@
             <span class="logo-text">Saidxonovnas School</span>
         </div>
         
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
         <div class="header-right">
             <nav class="main-nav">
                 <ul>
@@ -111,10 +159,23 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <nav>
+            <ul>
+                <li><a href="index.html">Bosh Sahifa</a></li>
+                <li><a href="index.html#courses">Kurslar</a></li>
+                <li><a href="index.html#about">Biz Haqimizda</a></li>
+                <li><a href="index.html#contact">Aloqa</a></li>
+                <li><a href="register.html" style="color: #FF6B6B; font-weight: bold;">Ro'yxatdan O'tish</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <section class="register-page">
         <div class="content-wrapper" style="text-align: center;">
-            <h2 style="color: #FF6B6B; font-size: 2.5em; margin-bottom: 10px;">📝 RO'YXATDAN O'TISH</h2>
-            <p style="font-size: 1.1em; max-width: 600px; margin: 0 auto 30px;">
+            <h2 style="color: #FF6B6B; font-size: 2em; margin-bottom: 10px;">📝 RO'YXATDAN O'TISH</h2>
+            <p style="font-size: 1em; max-width: 600px; margin: 0 auto 20px; padding: 0 10px;">
                 Kursni tanlang, ma'lumotlaringizni kiriting va <span style="color: #FF6B6B; font-weight: bold;">50% chegirma</span> bilan ro'yxatdan o'ting!
             </p>
         </div>
@@ -160,6 +221,12 @@
     </footer>
 
     <script>
+        // Mobile menu functionality
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+        });
+        
         // Telefon raqamini formatlash
         document.getElementById('phone').addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
@@ -189,6 +256,16 @@
             }
             
             e.target.value = formatted;
+        });
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileNav = document.getElementById('mobileNav');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (!mobileNav.contains(e.target) && !menuBtn.contains(e.target)) {
+                mobileNav.style.display = 'none';
+            }
         });
     </script>
 </body>
