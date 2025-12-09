@@ -58,10 +58,7 @@
             <h2>📝 Kurslarga Ro'yxatdan O'tish</h2>
             <p class="subtitle">Iltimos, kerakli kursni tanlang, ism va telefon raqamingizni kiriting. Menejerimiz siz bilan Telegram orqali bog'lanadi.</p>
 
-            <form id="register-form" class="register-form" 
-                action="https://formspree.io/f/xanrdgey"
-                method="POST"
-            >
+            <form id="register-form" class="register-form">
                 <input type="text" id="user-name" name="FIO" placeholder="Ismingizni kiriting" required>
                 
                 <select id="user-course" name="Kurs Nomi" required>
@@ -72,10 +69,6 @@
                 
                 <input type="tel" id="user-phone" name="Telefon Raqami" placeholder="+998 (XX) XXX-XX-XX" required>
                 
-                <input type="hidden" name="_next" value="https://www.saidxonovna.uz/payment.html" /> 
-
-                <input type="hidden" id="course-price-hidden" name="Kurs Narxi" value=""> 
-
                 <button type="submit" id="submit-reg-btn" class="promo-btn">✅ Tayyor!</button>
             </form>
         </div>
@@ -94,9 +87,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const phoneInput = document.getElementById('user-phone');
-            const courseSelect = document.getElementById('user-course');
-            const priceHiddenInput = document.getElementById('course-price-hidden'); 
-
+            const registerForm = document.getElementById('register-form'); 
+            
             // 1. Telefon raqamini formatlash
             phoneInput.addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\D/g, ''); 
@@ -136,20 +128,18 @@
                 e.target.value = formattedValue.trim();
             });
 
-            // 2. Kurs tanlanganda narxni yashirin inputga yozish
-            courseSelect.addEventListener('change', function() {
-                const selectedOption = this.options[this.selectedIndex];
-                const coursePrice = selectedOption.getAttribute('data-price');
+            // 2. YANGI QISM: Forma yuborilganda tekshirish va payment.html ga yo'naltirish
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Sahifa yangilanishini to'xtatish
                 
-                if (coursePrice) {
-                    const priceText = selectedOption.textContent.split('(')[1].split(')')[0].trim(); 
-                    priceHiddenInput.value = priceText;
-                } else {
-                    priceHiddenInput.value = '';
+                // Formadagi barcha talab qilingan maydonlar (required) to'ldirilganini tekshirish
+                if (registerForm.checkValidity()) {
+                    // Agar hamma narsa to'g'ri bo'lsa, to'g'ridan-to'g'ri payment.html ga yo'naltirish
+                    window.location.href = "https://www.saidxonovna.uz/payment.html";
                 }
+                // Agar maydonlar to'ldirilmagan bo'lsa, brauzer o'zi xato xabarini ko'rsatadi.
             });
-            
-            courseSelect.dispatchEvent(new Event('change')); 
+
         });
     </script>
 </body>
