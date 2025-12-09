@@ -63,6 +63,16 @@
         }
         .payme-btn { background-color: var(--color-secondary); } 
         .payme-btn:hover { background-color: #129e8e; }
+        
+        /* Yangi style: Ma'lumot yo'q bo'lsa */
+        .no-data-alert {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -93,7 +103,14 @@
         <h2>💳 To'lovni Tasdiqlash</h2>
         <p>Kursga ro'yxatdan o'tganingiz uchun rahmat. Iltimos, quyidagi ma'lumotlarni tekshiring va ko'rsatilgan kartaga pul o'tkazing.</p>
 
-        <div class="payment-details">
+        <!-- Agar ma'lumot yo'q bo'lsa bu blok ko'rinadi -->
+        <div id="no-data-alert" class="no-data-alert" style="display: none;">
+            <h3>⚠️ Ma'lumot Topilmadi</h3>
+            <p>Iltimos, avval ro'yxatdan o'ting yoki sahifani qaytadan yuklang.</p>
+            <a href="register.html" class="payment-btn" style="margin-top: 15px;">Ro'yxatdan O'tish Sahifasiga O'tish</a>
+        </div>
+
+        <div class="payment-details" id="payment-details">
             <p><strong>Ism:</strong> <span id="payment-name">...</span></p>
             <p><strong>Tanlangan Kurs:</strong> <span id="payment-course">...</span></p>
             <h3>To'lanadigan Summa: <span id="payment-price">...</span></h3>
@@ -128,14 +145,49 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // localStoragedan ma'lumotlarni olish va ko'rsatish
-            const name = localStorage.getItem('regName') || 'Nomaʼlum';
-            const course = localStorage.getItem('regCourse') || 'Tanlanmagan';
-            const price = localStorage.getItem('regPrice') || '0 UZS';
-
-            document.getElementById('payment-name').textContent = name;
-            document.getElementById('payment-course').textContent = course;
-            document.getElementById('payment-price').textContent = price;
+            // localStorage dan ma'lumotlarni olish
+            const savedData = localStorage.getItem('registrationData');
+            
+            if (savedData) {
+                // JSON formatidagi ma'lumotlarni parse qilish
+                const formData = JSON.parse(savedData);
+                
+                // Ma'lumotlarni sahifada ko'rsatish
+                document.getElementById('payment-name').textContent = formData.name;
+                document.getElementById('payment-course').textContent = formData.course;
+                document.getElementById('payment-price').textContent = formData.coursePrice + ' UZS';
+                
+                // Sahifani normal holatda ko'rsatish
+                document.getElementById('payment-details').style.display = 'block';
+                document.getElementById('no-data-alert').style.display = 'none';
+            } else {
+                // Agar ma'lumot topilmasa
+                document.getElementById('payment-name').textContent = 'Nomaʼlum';
+                document.getElementById('payment-course').textContent = 'Tanlanmagan';
+                document.getElementById('payment-price').textContent = '0 UZS';
+                
+                // Ogohlantirishni ko'rsatish
+                document.getElementById('payment-details').style.display = 'none';
+                document.getElementById('no-data-alert').style.display = 'block';
+                
+                // Agar sahifa bevosita ochilgan bo'lsa, 2 soniyadan keyin ro'yxatdan o'tish sahifasiga yo'naltirish
+                setTimeout(function() {
+                    window.location.href = "register.html";
+                }, 3000);
+            }
+            
+            // URL dan ma'lumotlarni ham tekshirish (agar kerak bo'lsa)
+            const urlParams = new URLSearchParams(window.location.search);
+            const nameParam = urlParams.get('name');
+            const courseParam = urlParams.get('course');
+            const priceParam = urlParams.get('price');
+            
+            // Agar URL parametrlari bo'lsa, ulardan foydalanish
+            if (nameParam || courseParam || priceParam) {
+                document.getElementById('payment-name').textContent = nameParam || formData.name || 'Nomaʼlum';
+                document.getElementById('payment-course').textContent = courseParam || formData.course || 'Tanlanmagan';
+                document.getElementById('payment-price').textContent = (priceParam || formData.coursePrice || '0') + ' UZS';
+            }
         });
     </script>
 </body>
