@@ -11,9 +11,102 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Hero bo'limi uchun padding */
-        #home.hero-section {
-            padding-top: 130px;
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            #home.hero-section {
+                padding-top: 100px;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .hero-section h1 {
+                font-size: 1.8em;
+                line-height: 1.3;
+            }
+            
+            .hero-section .subtitle {
+                font-size: 1em;
+                padding: 0 10px;
+            }
+            
+            .promo-box {
+                padding: 20px 15px;
+                margin: 20px 0;
+            }
+            
+            .promo-box h2 {
+                font-size: 1.4em;
+            }
+            
+            .promo-btn {
+                padding: 12px 20px;
+                font-size: 0.9em;
+            }
+            
+            .courses-section h2,
+            .about-section h2,
+            .teachers-section h2,
+            .feedback-section h2,
+            .contact-section h2 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+            
+            .course-card {
+                max-width: 100%;
+                padding: 20px 15px;
+                margin: 10px 0;
+            }
+            
+            .course-card h3 {
+                font-size: 1.2em;
+            }
+            
+            .content-wrapper {
+                padding: 0 15px;
+            }
+            
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                gap: 25px;
+                margin-top: 30px;
+            }
+            
+            .social-icons a {
+                font-size: 1.8em !important;
+            }
+            
+            iframe {
+                height: 500px !important;
+            }
+            
+            .main-footer {
+                padding: 25px 15px;
+                text-align: center;
+            }
+            
+            .main-footer .social-links {
+                margin-top: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2em;
+            }
+            
+            .hero-section h1 {
+                font-size: 1.5em;
+            }
+            
+            .promo-box h2 {
+                font-size: 1.2em;
+            }
+            
+            iframe {
+                height: 400px !important;
+            }
         }
     </style>
 </head>
@@ -46,6 +139,21 @@
             <a href="register.html" class="action-btn">RO'YXATDAN O'TISH</a>
         </div>
     </header>
+
+    <!-- Mobile Navigation (only shows on mobile) -->
+    <div class="mobile-nav" id="mobileNav" style="display: none;">
+        <nav>
+            <ul>
+                <li><a href="#home" onclick="closeMobileNav()">Bosh Sahifa</a></li>
+                <li><a href="#courses" onclick="closeMobileNav()">Kurslar</a></li>
+                <li><a href="#teachers" onclick="closeMobileNav()">Mutaxassis</a></li>
+                <li><a href="#feedback" onclick="closeMobileNav()">Fikrlar</a></li>
+                <li><a href="#about" onclick="closeMobileNav()">Biz Haqimizda</a></li>
+                <li><a href="#contact" onclick="closeMobileNav()">Aloqa</a></li>
+                <li><a href="register.html" onclick="closeMobileNav()" style="color: #FF6B6B; font-weight: bold;">Ro'yxatdan O'tish</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <section id="home" class="hero-section section-center">
         <div class="content-wrapper">
@@ -118,13 +226,13 @@
     <section id="teachers" class="teachers-section section-center">
         <h2>👩‍🏫 Bizning Mutaxassisimiz</h2>
         <div class="content-wrapper">
-            <p class="subtitle">Sizni onlayn maktab asoschisi, "Bositkhonova Muslima" shaxsan o'qitishadi. U nazariyani emas, balki amaliy, isbotlangan natijalarni taqdim etadi.</p>
+            <p class="subtitle">Sizni onlayn maktab asoschisi, "Bositkhonova Muslima" shaxsan o'qitishadi.</p>
             
             <div class="course-list" style="justify-content: center;">
                 <div class="course-card" style="max-width: 400px; margin: 20px auto;">
                     <img src="teacher_muslima.jpg" alt="Bositkhonova Muslima" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #007bff;">
                     <h3>Bositkhonova Muslima</h3>
-                    <p class="specialty">Saidxonovnas School Asoschisi & Amaliy Ekspert</p>
+                    <p class="specialty">Saidxonovnas School Asoschisi</p>
                     <p class="bio" style="font-size: 0.95em; line-height: 1.6;">
                         🚀 Maktabimiz asoschisi, Xitoy bilan savdo qilish va sotish jarayonlarining amaliy eksperti.<br>
                         📈 Shaxsan Xitoydan tovar olib kelish va uni muvaffaqiyatli sotishning barcha sirlarini o'rgatadi.<br>
@@ -177,25 +285,36 @@
     </footer>
 
     <script>
-        // Hamburger menyu
+        // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('menuToggle');
-            const mainNav = document.getElementById('mainNav');
+            const mobileNav = document.getElementById('mobileNav');
             
-            if (menuToggle && mainNav) {
-                menuToggle.addEventListener('click', function() {
-                    mainNav.classList.toggle('active');
-                    menuToggle.classList.toggle('active');
+            menuToggle.addEventListener('click', function() {
+                mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
-                
-                mainNav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mainNav.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                    });
-                });
-            }
+            });
         });
+        
+        function closeMobileNav() {
+            document.getElementById('mobileNav').style.display = 'none';
+        }
     </script>
 </body>
 </html>
