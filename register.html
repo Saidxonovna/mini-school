@@ -74,6 +74,8 @@
                 
                 <input type="hidden" name="_next" value="https://www.saidxonovna.uz/payment.html" /> 
 
+                <input type="hidden" id="course-price-hidden" name="Kurs Narxi" value=""> 
+
                 <button type="submit" id="submit-reg-btn" class="promo-btn">✅ Tayyor!</button>
             </form>
         </div>
@@ -92,16 +94,16 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const phoneInput = document.getElementById('user-phone');
+            const courseSelect = document.getElementById('user-course');
+            const priceHiddenInput = document.getElementById('course-price-hidden'); 
 
+            // 1. Telefon raqamini formatlash
             phoneInput.addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\D/g, ''); 
 
-                if (value.startsWith('998')) {
-                    value = value.slice(0, 12); 
-                } else if (value.length > 0) {
-                     if (value.length <= 9) { 
-                         value = '998' + value;
-                     }
+                // Agar O'zbekiston raqami bo'lsa, avtomatik ravishda +998 ni qo'shamiz
+                if (value.length > 0 && !value.startsWith('998') && value.length < 12) {
+                     value = '998' + value;
                 }
                 
                 let formattedValue = '';
@@ -111,12 +113,14 @@
                     
                     if (value.length > 3) formattedValue += ' ';
 
+                    // Kod qismi
                     if (value.length > 5) {
                         formattedValue += `(${value.slice(3, 5)})`;
                     } else if (value.length > 3) {
                         formattedValue += `(${value.slice(3)}`;
                     }
 
+                    // Raqamning qolgan qismi
                     if (value.length > 5) {
                         formattedValue += ` ${value.slice(5, 8)}`;
                     }
@@ -134,6 +138,23 @@
 
                 e.target.value = formattedValue.trim();
             });
+
+            // 2. YANGI QISM: Kurs tanlanganda narxni yashirin inputga yozish
+            courseSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                const coursePrice = selectedOption.getAttribute('data-price');
+                
+                if (coursePrice) {
+                    // Masalan: "50.000 UZS - 50% Chegirma" qismidan faqat "50.000 UZS" ni ajratib oladi
+                    const priceText = selectedOption.textContent.split('(')[1].split(')')[0].trim(); 
+                    priceHiddenInput.value = priceText;
+                } else {
+                    priceHiddenInput.value = '';
+                }
+            });
+            
+            // Sahifa yuklanganda narxni boshlang'ich qiymatga o'rnatish
+            courseSelect.dispatchEvent(new Event('change')); 
         });
     </script>
 </body>
