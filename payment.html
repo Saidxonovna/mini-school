@@ -9,89 +9,6 @@
     <style>
         /* ===== UNIVERSAL STYLES ===== */
         * {
-        
-        <style>
-    /* Barcha sahifalar uchun umumiy responsive qoidalar */
-    @media (max-width: 768px) {
-        /* Forma elementlari */
-        .register-form input,
-        .register-form select,
-        .register-form button {
-            width: 100%;
-            font-size: 16px; /* iOS da zoom bo'lmasligi uchun */
-        }
-        
-        /* Select elementlari */
-        select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 20px;
-            padding-right: 45px;
-        }
-        
-        /* Karta raqami */
-        code {
-            font-size: 1.4em;
-            word-break: break-all;
-            display: inline-block;
-            line-height: 1.4;
-        }
-        
-        /* Button hover effektini mobilda olib tashlash */
-        button:hover,
-        a:hover {
-            opacity: 1;
-        }
-        
-        /* Touch-friendly elementlar */
-        button,
-        a,
-        input,
-        select {
-            min-height: 44px; /* Touch tap target */
-        }
-        
-        /* Spacing */
-        h2 {
-            margin-bottom: 20px;
-            font-size: 1.6em;
-        }
-        
-        .subtitle {
-            font-size: 0.9em;
-            margin-bottom: 30px;
-        }
-    }
-    
-    /* 2x retina display uchun */
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        .logo-img {
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-        }
-    }
-    
-    /* Dark mode uchun */
-    @media (prefers-color-scheme: dark) {
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-        
-        .payment-details {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-        }
-        
-        .main-nav ul li a {
-            color: #e0e0e0;
-        }
-    }
-</style>
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -827,6 +744,87 @@
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg, #dc2626, #ea580c);
         }
+        <style>
+    /* Barcha sahifalar uchun umumiy responsive qoidalar */
+    @media (max-width: 768px) {
+        /* Forma elementlari */
+        .register-form input,
+        .register-form select,
+        .register-form button {
+            width: 100%;
+            font-size: 16px; /* iOS da zoom bo'lmasligi uchun */
+        }
+        
+        /* Select elementlari */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+            padding-right: 45px;
+        }
+        
+        /* Karta raqami */
+        code {
+            font-size: 1.4em;
+            word-break: break-all;
+            display: inline-block;
+            line-height: 1.4;
+        }
+        
+        /* Button hover effektini mobilda olib tashlash */
+        button:hover,
+        a:hover {
+            opacity: 1;
+        }
+        
+        /* Touch-friendly elementlar */
+        button,
+        a,
+        input,
+        select {
+            min-height: 44px; /* Touch tap target */
+        }
+        
+        /* Spacing */
+        h2 {
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+        
+        .subtitle {
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+    }
+    
+    /* 2x retina display uchun */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .logo-img {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+    }
+    
+    /* Dark mode uchun */
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        .payment-details {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        
+        .main-nav ul li a {
+            color: #e0e0e0;
+        }
+    }
     </style>
 </head>
 <body>
