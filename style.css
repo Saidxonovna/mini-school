@@ -662,3 +662,580 @@ button, .action-btn, .details-btn {
         border: 1px solid #000;
     }
 }
+
+/* 1024x768 o'lchami uchun mukammal sozlashlar */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* ========== UMUMIY O'ZGARTIRISHLAR ========== */
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    .container {
+        max-width: 95%;
+        margin: 0 auto;
+    }
+    
+    .section-center {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
+    /* ========== HEADER ========== */
+    .main-header {
+        padding: 20px 30px;
+        flex-wrap: nowrap;
+    }
+    
+    .logo {
+        flex: 0 0 auto;
+    }
+    
+    .logo-text {
+        font-size: 1.1em;
+    }
+    
+    .logo-img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .header-right {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    
+    .main-nav ul {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .main-nav ul li {
+        margin: 0;
+    }
+    
+    .main-nav ul li a {
+        padding: 8px 15px;
+        font-size: 0.95em;
+        white-space: nowrap;
+    }
+    
+    .action-btn.desktop-only {
+        margin-left: 20px;
+        padding: 10px 25px;
+        font-size: 0.95em;
+        min-width: 150px;
+        text-align: center;
+    }
+    
+    /* Menu toggle yashirish */
+    .menu-toggle {
+        display: none !important;
+    }
+    
+    /* ========== REGISTER PAGE ========== */
+    .register-page-wrapper {
+        min-height: calc(100vh - 100px);
+        padding: 40px 20px;
+        justify-content: flex-start;
+    }
+    
+    .content-wrapper {
+        max-width: 750px;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    .registration-form-section h2 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    
+    .subtitle {
+        font-size: 1.1em;
+        line-height: 1.5;
+        margin-bottom: 35px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Kurs kartalari */
+    .course-selection {
+        max-width: 700px;
+        margin: 30px auto;
+        gap: 25px;
+    }
+    
+    .course-option {
+        padding: 25px 30px;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .course-header {
+        margin-bottom: 20px;
+        align-items: center;
+    }
+    
+    .course-title {
+        font-size: 1.4em;
+        flex: 1;
+        margin-right: 20px;
+    }
+    
+    .course-price {
+        font-size: 1.6em;
+        white-space: nowrap;
+    }
+    
+    .course-discount {
+        font-size: 1em;
+        padding: 8px 20px;
+        align-self: flex-start;
+    }
+    
+    .course-details {
+        font-size: 1.05em;
+        line-height: 1.6;
+        margin-top: 15px;
+    }
+    
+    .original-price {
+        font-size: 1em;
+    }
+    
+    .course-option.selected::before {
+        top: 25px;
+        right: 25px;
+        font-size: 1.8em;
+    }
+    
+    /* Selected kurs summary */
+    .selected-course-summary {
+        max-width: 700px;
+        margin: 30px auto 25px;
+        padding: 25px;
+        font-size: 1.1em;
+    }
+    
+    .summary-title {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+    
+    /* Form elementlari */
+    .register-form {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .form-group {
+        margin-bottom: 30px;
+    }
+    
+    .form-group label {
+        font-size: 1.15em;
+        margin-bottom: 12px;
+    }
+    
+    .form-input {
+        padding: 18px 25px;
+        font-size: 1.1em;
+        border-radius: 12px;
+        height: 58px;
+    }
+    
+    .phone-input-wrapper::before {
+        left: 25px;
+        font-size: 1.3em;
+    }
+    
+    .phone-input {
+        padding-left: 60px !important;
+    }
+    
+    /* Submit button */
+    .submit-btn {
+        padding: 20px;
+        font-size: 1.25em;
+        border-radius: 12px;
+        height: 65px;
+        margin-top: 20px;
+        letter-spacing: 0.5px;
+    }
+    
+    /* ========== PAYMENT PAGE ========== */
+    .payment-wrapper {
+        min-height: calc(100vh - 100px);
+        padding: 40px 30px;
+        justify-content: flex-start;
+    }
+    
+    .payment-wrapper h2 {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+    
+    .payment-wrapper > p {
+        font-size: 1.15em;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        line-height: 1.6;
+    }
+    
+    .payment-details {
+        max-width: 600px;
+        padding: 35px;
+        margin-top: 0;
+    }
+    
+    .payment-details p {
+        font-size: 1.15em;
+        margin: 15px 0;
+    }
+    
+    .payment-details h3 {
+        font-size: 1.5em;
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
+    
+    .payment-details h4 {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+    
+    /* Karta raqami bloki */
+    .payment-details > div {
+        margin-top: 30px;
+        padding: 25px;
+    }
+    
+    .payment-details code {
+        font-size: 1.8em;
+        letter-spacing: 3px;
+        padding: 15px;
+        margin: 10px 0;
+        display: inline-block;
+        background: #f8f9fa;
+        border-radius: 8px;
+        font-family: 'Courier New', monospace;
+        font-weight: 700;
+    }
+    
+    /* Telegram button */
+    .payment-btn.payme-btn {
+        padding: 18px 35px;
+        font-size: 1.2em;
+        margin-top: 25px;
+        border-radius: 12px;
+        height: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Ma'lumotlarni o'zgartirish linki */
+    .payment-details a[href="register.html"] {
+        font-size: 1.1em;
+        margin-top: 30px;
+        padding: 12px;
+        display: inline-block;
+    }
+    
+    /* ========== FOOTER ========== */
+    .main-footer {
+        padding: 30px;
+        font-size: 0.95em;
+    }
+    
+    .social-links {
+        margin-top: 25px;
+        gap: 30px;
+    }
+    
+    .social-links a {
+        font-size: 1.1em;
+        padding: 10px 25px;
+    }
+    
+    /* ========== 1024x768 PORTRAIT MODE ========== */
+    @media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+        .register-page-wrapper {
+            padding: 30px 20px;
+        }
+        
+        .course-selection {
+            gap: 20px;
+        }
+        
+        .course-option {
+            padding: 20px 25px;
+            min-height: 170px;
+        }
+        
+        .course-title {
+            font-size: 1.3em;
+        }
+        
+        .course-price {
+            font-size: 1.5em;
+        }
+        
+        .form-input {
+            padding: 16px 22px;
+            height: 55px;
+        }
+        
+        .submit-btn {
+            padding: 18px;
+            height: 60px;
+            font-size: 1.2em;
+        }
+        
+        .payment-wrapper {
+            padding: 30px 25px;
+        }
+        
+        .payment-details {
+            padding: 30px;
+        }
+    }
+    
+    /* ========== 1024x768 LANDSCAPE MODE ========== */
+    @media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+        .hero-section {
+            min-height: 85vh;
+        }
+        
+        .register-page-wrapper {
+            min-height: 85vh;
+            padding: 30px;
+        }
+        
+        .course-selection {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        
+        .course-option {
+            flex: 1;
+            min-width: 320px;
+            min-height: 200px;
+        }
+        
+        .payment-wrapper {
+            min-height: 85vh;
+        }
+    }
+    
+    /* ========== MAXSUS 1024x768 FIXLAR ========== */
+    @media screen and (width: 1024px) and (height: 768px) {
+        /* Ekran to'liq foydalanish */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .main-footer {
+            margin-top: auto;
+        }
+        
+        /* Header fix */
+        .main-nav ul {
+            gap: 12px;
+        }
+        
+        .main-nav ul li a {
+            padding: 8px 12px;
+            font-size: 0.9em;
+        }
+        
+        /* Kurs kartalari o'lchami */
+        .course-option {
+            min-height: 190px;
+        }
+        
+        .course-title {
+            font-size: 1.35em;
+        }
+        
+        .course-details {
+            font-size: 1em;
+        }
+        
+        /* Form elementlari o'lchami */
+        .form-input {
+            height: 56px;
+            font-size: 1.05em;
+        }
+        
+        .phone-input {
+            padding-left: 55px !important;
+        }
+        
+        /* Submit button */
+        .submit-btn {
+            height: 62px;
+            font-size: 1.2em;
+        }
+        
+        /* Payment page karta raqami */
+        .payment-details code {
+            font-size: 1.6em;
+            letter-spacing: 2px;
+            padding: 12px;
+        }
+        
+        /* Mobile menyu tugmasini yashirish */
+        .menu-toggle {
+            display: none;
+        }
+    }
+}
+
+/* ========== 1024x768 uchun maxsus hover effektlar ========== */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .course-option:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .course-option.selected:hover {
+        transform: translateY(-5px) scale(1.01);
+    }
+    
+    .action-btn:hover,
+    .promo-btn:hover,
+    .payment-btn:hover,
+    .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .form-input:focus {
+        border-width: 3px;
+        box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.15);
+    }
+    
+    /* Navigation hover effektlari */
+    .main-nav ul li a:hover {
+        background: rgba(76, 175, 80, 0.1);
+        transform: translateY(-2px);
+    }
+    
+    /* Social links hover */
+    .social-links a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* ========== 1024x768 uchun maxsus font va icon o'lchamlari ========== */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    h2::before {
+        font-size: 1.5em;
+        margin-right: 15px;
+        vertical-align: middle;
+    }
+    
+    .payment-wrapper h2::before {
+        content: "💳 ";
+    }
+    
+    .registration-form-section h2::before {
+        content: "📝 ";
+    }
+    
+    .summary-title span:first-child::before {
+        content: "✅ ";
+        margin-right: 8px;
+    }
+}
+
+/* ========== 1024x768 uchun maxsus scroll behavior ========== */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+    }
+    
+    /* Form elementlariga focus */
+    input:focus,
+    select:focus,
+    button:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+    }
+    
+    /* Touch uchun better tap targets */
+    button,
+    a,
+    .course-option,
+    .form-input {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* ========== 1024x768 uchun background va animationlar ========== */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .course-option.selected::before {
+        animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+        100% { transform: scale(1); }
+    }
+    
+    /* Loading animation submit bosilganda */
+    .submit-btn:disabled {
+        animation: loading-pulse 1.5s infinite;
+    }
+    
+    @keyframes loading-pulse {
+        0% { opacity: 0.7; }
+        50% { opacity: 1; }
+        100% { opacity: 0.7; }
+    }
+}
+
+/* ========== 1024x768 uchun yana qo'shimcha optimizatsiyalar ========== */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Image optimization */
+    .logo-img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    /* Text selection */
+    ::selection {
+        background: rgba(76, 175, 80, 0.3);
+        color: #000;
+    }
+    
+    /* Placeholder styling */
+    ::placeholder {
+        color: #888;
+        font-size: 0.95em;
+    }
+    
+    /* Select dropdown styling */
+    .course-option {
+        user-select: none;
+    }
+    
+    /* Improve performance */
+    .course-option,
+    .payment-details {
+        will-change: transform;
+        backface-visibility: hidden;
+    }
+}
